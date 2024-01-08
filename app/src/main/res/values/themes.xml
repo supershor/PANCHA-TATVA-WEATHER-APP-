@@ -1,0 +1,29 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.PANCHATATVAWEATHERAPP" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+    <style name="Dark" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="android:textColor">@color/black</item>
+        <item name="cardBackgroundColor">@color/white</item>
+        <item name="popupMenuBackground">@color/white</item>
+        <item name="boxBackgroundColor">@color/transparet</item>
+        <item name="actionBarItemBackground">@color/white</item>
+        <item name="theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+        <item name="titleTextColor">@color/black</item>
+
+    </style>
+
+    <style name="Light" parent="Theme.Material3.Light.NoActionBar">
+        <item name="android:textColor">@color/white</item>
+        <item name="cardBackgroundColor">@color/black</item>
+        <item name="popupMenuBackground">@color/black</item>
+        <item name="boxBackgroundColor">@color/transparet</item>
+        <item name="actionBarItemBackground">@color/black</item>
+        <item name="theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+        <item name="titleTextColor">@color/white</item>
+
+    </style>
+    <style name="Theme.PANCHATATVAWEATHERAPP" parent="Base.Theme.PANCHATATVAWEATHERAPP" />
+</resources>
