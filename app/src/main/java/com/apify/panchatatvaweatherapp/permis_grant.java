@@ -95,7 +95,6 @@ public class permis_grant extends AppCompatActivity {
                         List<Address> fromLocation = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
                         Log.d("ans city", fromLocation.get(0).getLocality() + " ,1 " + fromLocation.get(0).getAdminArea() + " ,2 " + fromLocation.get(0).getCountryName());
                         permis_grant.this.editor.putString("locality", fromLocation.get(0).getLocality().toString());
-                        permis_grant.this.editor.putString("city", fromLocation.get(0).getAdminArea().toString());
                         Log.d("ans geo", fromLocation.get(0).getAddressLine(0) + " ,1 " + fromLocation.get(0).getAddressLine(1) + " ,2 " + fromLocation.get(0).getAddressLine(2));
                         permis_grant.this.editor.commit();
                         permis_grant permis_grantVar = permis_grant.this;

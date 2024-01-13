@@ -9,14 +9,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <androidx.appcompat.widget.Toolbar
-                    app:title="JAGDALPUR"
+                    app:title="--"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/toolsbar"/>
             </LinearLayout>
             <LinearLayout android:layout_marginBottom="@dimen/_100sdp" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="@dimen/_100sdp">
-                <TextView android:gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="@dimen/_60sdp" android:id="@+id/current_temp_at_front" android:text="19℃"/>
-                <TextView android:layout_marginBottom="@dimen/_60sdp" android:gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="@dimen/_20sdp" android:id="@+id/current_weather_type_at_front" android:text="PARTIALLY CLOUDY ⁓ 23℃"/>
+                <TextView android:gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="@dimen/_60sdp" android:id="@+id/current_temp_at_front" android:text="--℃"/>
+                <TextView android:layout_marginBottom="@dimen/_60sdp" android:gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="@dimen/_20sdp" android:id="@+id/current_weather_type_at_front" android:text="-- ⁓ --℃"/>
             </LinearLayout>
             <androidx.cardview.widget.CardView android:layout_margin="@dimen/_10sdp" android:layout_width="match_parent" android:layout_height="wrap_content" app:cardElevation="@dimen/_5sdp" app:cardBackgroundColor="@color/transparet">
                 <HorizontalScrollView android:visibility="visible" android:layout_margin="@dimen/_7sdp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/_2sdp">
