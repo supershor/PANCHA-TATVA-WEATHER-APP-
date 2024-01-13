@@ -607,7 +607,8 @@ public class MainActivity extends AppCompatActivity {
             intent2.putExtra("android.intent.extra.SUBJECT", "Owner PANCHA_TATVA(Weather app");
             startActivity(intent2);
         } else if (itemId == R.id.newloc) {
-            Toast.makeText(this, "new loc to be added", Toast.LENGTH_LONG).show();
+            Intent newloc=new Intent(MainActivity.this,New_Location.class);
+            startActivity(newloc);
         } else if (itemId != R.id.lightmode) {
             Toast.makeText(this, "to be added", Toast.LENGTH_SHORT).show();
         }else if (itemId != R.id.darkmode) {
