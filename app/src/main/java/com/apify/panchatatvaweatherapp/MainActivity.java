@@ -307,7 +307,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        Toast.makeText(this, "light", Toast.LENGTH_SHORT).show();
         this.lottielight = (LottieAnimationView) findViewById(R.id.lottie1);
         this.lottiedark = (LottieAnimationView) findViewById(R.id.lottie2);
         this.lottieAnimationView1 = (LottieAnimationView) findViewById(R.id.errorballon);

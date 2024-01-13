@@ -95,12 +95,9 @@ public class New_Location extends AppCompatActivity {
                                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                     @Override
                                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                        Toast.makeText(New_Location.this, ""+position, Toast.LENGTH_SHORT).show();
                                         Toast.makeText(New_Location.this, places.get(position).toString(), Toast.LENGTH_SHORT).show();
                                         try {
                                             JSONObject final_tap=jsonArray.getJSONObject(position);
-                                            Toast.makeText(New_Location.this,final_tap.get("latitude")+"->latitude", Toast.LENGTH_SHORT).show();
-                                            Toast.makeText(New_Location.this,final_tap.get("longitude")+"->longitude", Toast.LENGTH_SHORT).show();
                                             Toast.makeText(New_Location.this,final_tap.get("name").toString()+"->city", Toast.LENGTH_SHORT).show();
                                             SharedPreferences sharedPreferences=getSharedPreferences("locations",0);
                                             SharedPreferences.Editor editor=sharedPreferences.edit();

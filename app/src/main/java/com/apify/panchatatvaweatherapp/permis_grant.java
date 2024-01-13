@@ -38,6 +38,7 @@ public class permis_grant extends AppCompatActivity {
     LocationManager locationManager;
     SharedPreferences sharedPreferences;
 
+    @SuppressLint("WrongConstant")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
