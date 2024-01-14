@@ -32,7 +32,7 @@
                 android:background="#679bda"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="ENTER LOCATION"
+                android:hint="ENTER CITY"
                 android:id="@+id/text"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
