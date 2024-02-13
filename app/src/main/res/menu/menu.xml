@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item app:showAsAction="never" android:title="Refresh" android:icon="@drawable/refresh" android:id="@+id/refresh"/>
-    <item app:showAsAction="never" android:title="New location" android:icon="@drawable/new_location" android:id="@+id/newloc"/>
-    <item app:showAsAction="never" android:title="Report error" android:icon="@drawable/report_sign" android:id="@+id/report"/>
-    <item app:showAsAction="never" android:title="Contact owner" android:icon="@drawable/new_user" android:id="@+id/contact"/>
+    <item app:showAsAction="withText" android:title="Refresh" android:icon="@drawable/refresh" android:id="@+id/refresh"/>
+    <item app:showAsAction="withText" android:title="New location" android:icon="@drawable/new_location" android:id="@+id/newloc"/>
+    <item app:showAsAction="withText" android:title="Report error" android:icon="@drawable/report_sign" android:id="@+id/report"/>
+    <item app:showAsAction="withText" android:title="Contact owner" android:icon="@drawable/new_user" android:id="@+id/contact"/>
+    <item app:showAsAction="withText" android:title="7 days report" android:icon="@drawable/new_user" android:id="@+id/days_7_168_hours_detail"/>
 </menu>
