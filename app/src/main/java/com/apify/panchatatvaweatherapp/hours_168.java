@@ -3063,9 +3063,11 @@ public class hours_168 extends AppCompatActivity {
                         JSONArray uv_index=hourly.getJSONArray("uv_index");
                         JSONArray wind_direction_10m=hourly.getJSONArray("wind_direction_10m");
                         JSONArray wind_speed_10m=hourly.getJSONArray("wind_speed_10m");
+                        for (int i = 0; i <7; i++) {
+                            set_date(i,(hourly.getJSONArray("time").getString(i*24)));
+                        }
                         for (int i = 0; i < 168; i++) {
-                            int day=day_count(i);
-
+                            set_all(day_count(i),hour_count(i),weather_code.getString(i),apparent_temperature.getString(i),rain.getString(i),showers.getString(i),snowfall.getString(i),uv_index.getString(i),wind_direction_10m.getString(i),wind_speed_10m.getString(i));
                         }
                     } catch (JSONException e) {
                         throw new RuntimeException(e);
@@ -3077,6 +3079,30 @@ public class hours_168 extends AppCompatActivity {
 
                 }
             });
+        }
+    }
+    public void set_date(int date,String i){
+        if(date==0){
+            TextView textView=findViewById(R.id.day_1);
+            textView.setText(i.substring(8,10)+"-"+i.substring(5,7));
+        } else if (date==1) {
+            TextView textView=findViewById(R.id.day_2);
+            textView.setText(i.substring(8,10)+"-"+i.substring(5,7));
+        } else if (date==2) {
+            TextView textView=findViewById(R.id.day_3);
+            textView.setText(i.substring(8,10)+"-"+i.substring(5,7));
+        }else if (date==3){
+            TextView textView=findViewById(R.id.day_4);
+            textView.setText(i.substring(8,10)+"-"+i.substring(5,7));
+        } else if (date==4) {
+            TextView textView=findViewById(R.id.day_5);
+            textView.setText(i.substring(8,10)+"-"+i.substring(5,7));
+        }else if(date==5){
+            TextView textView=findViewById(R.id.day_6);
+            textView.setText(i.substring(8,10)+"-"+i.substring(5,7));
+        }else if(date==6){
+            TextView textView=findViewById(R.id.day_7);
+            textView.setText(i.substring(8,10)+"-"+i.substring(5,7));
         }
     }
     public void set_7_day_weather_type(ImageView img,int weather_code){
@@ -3134,27 +3160,1541 @@ public class hours_168 extends AppCompatActivity {
             img.setImageResource(R.drawable.ice_storm);
         }
     }
-    public void set_text(TextView text,int text_to_set){
+    public void set_text(TextView text,String text_to_set){
         text.setText(text_to_set);
     }
     public int day_count(int time){
         return time/24;
+    }public int hour_count(int time){
+        return time%24+1;
     }
-    public void set_all(int day,String weather_code,String apparent_temperature,String rain,String showers,String snowfall,String uv_index,String wind_direction_10m,String wind_speed_10m){
+    public void set_all(int day,int hour,String weather_code,String apparent_temperature,String rain,String showers,String snowfall,String uv_index,String wind_direction_10m,String wind_speed_10m){
         if(day==0){
-
+            if(hour==1){
+                set_7_day_weather_type(weather_day_1_hour_1,Integer.parseInt(weather_code));
+                set_text(max_temp_day_1_hour_1,apparent_temperature);
+                set_text(rain_day_1_hour_1,rain);
+                set_text(showers_day_1_hour_1,showers);
+                set_text(snowfall_day_1_hour_1,snowfall);
+                set_text(uv_day_1_hour_1,uv_index);
+                set_text(wind_direction_day_1_hour_1,wind_direction_10m);
+                set_text(wind_speed_day_1_hour_1,wind_speed_10m);
+            }else if(hour==2){
+                set_7_day_weather_type(weather_day_1_hour_2,Integer.parseInt(weather_code));
+                set_text(max_temp_day_1_hour_2,apparent_temperature);
+                set_text(rain_day_1_hour_2,rain);
+                set_text(showers_day_1_hour_2,showers);
+                set_text(snowfall_day_1_hour_2,snowfall);
+                set_text(uv_day_1_hour_2,uv_index);
+                set_text(wind_direction_day_1_hour_2,wind_direction_10m);
+                set_text(wind_speed_day_1_hour_2,wind_speed_10m);
+            }else if(hour==3){
+                set_7_day_weather_type(weather_day_1_hour_3,Integer.parseInt(weather_code));
+                set_text(max_temp_day_1_hour_3,apparent_temperature);
+                set_text(rain_day_1_hour_3,rain);
+                set_text(showers_day_1_hour_3,showers);
+                set_text(snowfall_day_1_hour_3,snowfall);
+                set_text(uv_day_1_hour_3,uv_index);
+                set_text(wind_direction_day_1_hour_3,wind_direction_10m);
+                set_text(wind_speed_day_1_hour_3,wind_speed_10m);
+            }else if(hour==4){
+                set_7_day_weather_type(weather_day_1_hour_4,Integer.parseInt(weather_code));
+                set_text(max_temp_day_1_hour_4,apparent_temperature);
+                set_text(rain_day_1_hour_4,rain);
+                set_text(showers_day_1_hour_4,showers);
+                set_text(snowfall_day_1_hour_4,snowfall);
+                set_text(uv_day_1_hour_4,uv_index);
+                set_text(wind_direction_day_1_hour_4,wind_direction_10m);
+                set_text(wind_speed_day_1_hour_4,wind_speed_10m);
+            }else if(hour==5){
+                set_7_day_weather_type(weather_day_1_hour_5,Integer.parseInt(weather_code));
+                set_text(max_temp_day_1_hour_5,apparent_temperature);
+                set_text(rain_day_1_hour_5,rain);
+                set_text(showers_day_1_hour_5,showers);
+                set_text(snowfall_day_1_hour_5,snowfall);
+                set_text(uv_day_1_hour_5,uv_index);
+                set_text(wind_direction_day_1_hour_5,wind_direction_10m);
+                set_text(wind_speed_day_1_hour_5,wind_speed_10m);
+            }else if(hour==6){
+                set_7_day_weather_type(weather_day_1_hour_6,Integer.parseInt(weather_code));
+                set_text(max_temp_day_1_hour_6,apparent_temperature);
+                set_text(rain_day_1_hour_6,rain);
+                set_text(showers_day_1_hour_6,showers);
+                set_text(snowfall_day_1_hour_6,snowfall);
+                set_text(uv_day_1_hour_6,uv_index);
+                set_text(wind_direction_day_1_hour_6,wind_direction_10m);
+                set_text(wind_speed_day_1_hour_6,wind_speed_10m);
+            }else if(hour==7){
+                set_7_day_weather_type(weather_day_1_hour_7,Integer.parseInt(weather_code));
+                set_text(max_temp_day_1_hour_7,apparent_temperature);
+                set_text(rain_day_1_hour_7,rain);
+                set_text(showers_day_1_hour_7,showers);
+                set_text(snowfall_day_1_hour_7,snowfall);
+                set_text(uv_day_1_hour_7,uv_index);
+                set_text(wind_direction_day_1_hour_7,wind_direction_10m);
+                set_text(wind_speed_day_1_hour_7,wind_speed_10m);
+            }else if(hour==8){
+                set_7_day_weather_type(weather_day_1_hour_8,Integer.parseInt(weather_code));
+                set_text(max_temp_day_1_hour_8,apparent_temperature);
+                set_text(rain_day_1_hour_8,rain);
+                set_text(showers_day_1_hour_8,showers);
+                set_text(snowfall_day_1_hour_8,snowfall);
+                set_text(uv_day_1_hour_8,uv_index);
+                set_text(wind_direction_day_1_hour_8,wind_direction_10m);
+                set_text(wind_speed_day_1_hour_8,wind_speed_10m);
+            }else if(hour==9){
+                set_7_day_weather_type(weather_day_1_hour_9,Integer.parseInt(weather_code));
+                set_text(max_temp_day_1_hour_9,apparent_temperature);
+                set_text(rain_day_1_hour_9,rain);
+                set_text(showers_day_1_hour_9,showers);
+                set_text(snowfall_day_1_hour_9,snowfall);
+                set_text(uv_day_1_hour_9,uv_index);
+                set_text(wind_direction_day_1_hour_9,wind_direction_10m);
+                set_text(wind_speed_day_1_hour_9,wind_speed_10m);
+            }else if(hour==10){
+                set_7_day_weather_type(weather_day_1_hour_10,Integer.parseInt(weather_code));
+                set_text(max_temp_day_1_hour_10,apparent_temperature);
+                set_text(rain_day_1_hour_10,rain);
+                set_text(showers_day_1_hour_10,showers);
+                set_text(snowfall_day_1_hour_10,snowfall);
+                set_text(uv_day_1_hour_10,uv_index);
+                set_text(wind_direction_day_1_hour_10,wind_direction_10m);
+                set_text(wind_speed_day_1_hour_10,wind_speed_10m);
+            }else if(hour==11){
+                set_7_day_weather_type(weather_day_1_hour_11,Integer.parseInt(weather_code));
+                set_text(max_temp_day_1_hour_11,apparent_temperature);
+                set_text(rain_day_1_hour_11,rain);
+                set_text(showers_day_1_hour_11,showers);
+                set_text(snowfall_day_1_hour_11,snowfall);
+                set_text(uv_day_1_hour_11,uv_index);
+                set_text(wind_direction_day_1_hour_11,wind_direction_10m);
+                set_text(wind_speed_day_1_hour_11,wind_speed_10m);
+            }else if(hour==12){
+                set_7_day_weather_type(weather_day_1_hour_12,Integer.parseInt(weather_code));
+                set_text(max_temp_day_1_hour_12,apparent_temperature);
+                set_text(rain_day_1_hour_12,rain);
+                set_text(showers_day_1_hour_12,showers);
+                set_text(snowfall_day_1_hour_12,snowfall);
+                set_text(uv_day_1_hour_12,uv_index);
+                set_text(wind_direction_day_1_hour_12,wind_direction_10m);
+                set_text(wind_speed_day_1_hour_12,wind_speed_10m);
+            }else if(hour==13){
+                set_7_day_weather_type(weather_day_1_hour_13,Integer.parseInt(weather_code));
+                set_text(max_temp_day_1_hour_13,apparent_temperature);
+                set_text(rain_day_1_hour_13,rain);
+                set_text(showers_day_1_hour_13,showers);
+                set_text(snowfall_day_1_hour_13,snowfall);
+                set_text(uv_day_1_hour_13,uv_index);
+                set_text(wind_direction_day_1_hour_13,wind_direction_10m);
+                set_text(wind_speed_day_1_hour_13,wind_speed_10m);
+            }else if(hour==14){
+                set_7_day_weather_type(weather_day_1_hour_14,Integer.parseInt(weather_code));
+                set_text(max_temp_day_1_hour_14,apparent_temperature);
+                set_text(rain_day_1_hour_14,rain);
+                set_text(showers_day_1_hour_14,showers);
+                set_text(snowfall_day_1_hour_14,snowfall);
+                set_text(uv_day_1_hour_14,uv_index);
+                set_text(wind_direction_day_1_hour_14,wind_direction_10m);
+                set_text(wind_speed_day_1_hour_14,wind_speed_10m);
+            }else if(hour==15){
+                set_7_day_weather_type(weather_day_1_hour_15,Integer.parseInt(weather_code));
+                set_text(max_temp_day_1_hour_15,apparent_temperature);
+                set_text(rain_day_1_hour_15,rain);
+                set_text(showers_day_1_hour_15,showers);
+                set_text(snowfall_day_1_hour_15,snowfall);
+                set_text(uv_day_1_hour_15,uv_index);
+                set_text(wind_direction_day_1_hour_15,wind_direction_10m);
+                set_text(wind_speed_day_1_hour_15,wind_speed_10m);
+            }else if(hour==16){
+                set_7_day_weather_type(weather_day_1_hour_16,Integer.parseInt(weather_code));
+                set_text(max_temp_day_1_hour_16,apparent_temperature);
+                set_text(rain_day_1_hour_16,rain);
+                set_text(showers_day_1_hour_16,showers);
+                set_text(snowfall_day_1_hour_16,snowfall);
+                set_text(uv_day_1_hour_16,uv_index);
+                set_text(wind_direction_day_1_hour_16,wind_direction_10m);
+                set_text(wind_speed_day_1_hour_16,wind_speed_10m);
+            }else if(hour==17){
+                set_7_day_weather_type(weather_day_1_hour_17,Integer.parseInt(weather_code));
+                set_text(max_temp_day_1_hour_17,apparent_temperature);
+                set_text(rain_day_1_hour_17,rain);
+                set_text(showers_day_1_hour_17,showers);
+                set_text(snowfall_day_1_hour_17,snowfall);
+                set_text(uv_day_1_hour_17,uv_index);
+                set_text(wind_direction_day_1_hour_17,wind_direction_10m);
+                set_text(wind_speed_day_1_hour_17,wind_speed_10m);
+            }else if(hour==18){
+                set_7_day_weather_type(weather_day_1_hour_18,Integer.parseInt(weather_code));
+                set_text(max_temp_day_1_hour_18,apparent_temperature);
+                set_text(rain_day_1_hour_18,rain);
+                set_text(showers_day_1_hour_18,showers);
+                set_text(snowfall_day_1_hour_18,snowfall);
+                set_text(uv_day_1_hour_18,uv_index);
+                set_text(wind_direction_day_1_hour_18,wind_direction_10m);
+                set_text(wind_speed_day_1_hour_18,wind_speed_10m);
+            }else if(hour==19){
+                set_7_day_weather_type(weather_day_1_hour_19,Integer.parseInt(weather_code));
+                set_text(max_temp_day_1_hour_19,apparent_temperature);
+                set_text(rain_day_1_hour_19,rain);
+                set_text(showers_day_1_hour_19,showers);
+                set_text(snowfall_day_1_hour_19,snowfall);
+                set_text(uv_day_1_hour_19,uv_index);
+                set_text(wind_direction_day_1_hour_19,wind_direction_10m);
+                set_text(wind_speed_day_1_hour_19,wind_speed_10m);
+            }else if(hour==20){
+                set_7_day_weather_type(weather_day_1_hour_20,Integer.parseInt(weather_code));
+                set_text(max_temp_day_1_hour_20,apparent_temperature);
+                set_text(rain_day_1_hour_20,rain);
+                set_text(showers_day_1_hour_20,showers);
+                set_text(snowfall_day_1_hour_20,snowfall);
+                set_text(uv_day_1_hour_20,uv_index);
+                set_text(wind_direction_day_1_hour_20,wind_direction_10m);
+                set_text(wind_speed_day_1_hour_20,wind_speed_10m);
+            }else if(hour==21){
+                set_7_day_weather_type(weather_day_1_hour_21,Integer.parseInt(weather_code));
+                set_text(max_temp_day_1_hour_21,apparent_temperature);
+                set_text(rain_day_1_hour_21,rain);
+                set_text(showers_day_1_hour_21,showers);
+                set_text(snowfall_day_1_hour_21,snowfall);
+                set_text(uv_day_1_hour_21,uv_index);
+                set_text(wind_direction_day_1_hour_21,wind_direction_10m);
+                set_text(wind_speed_day_1_hour_21,wind_speed_10m);
+            }else if(hour==22){
+                set_7_day_weather_type(weather_day_1_hour_22,Integer.parseInt(weather_code));
+                set_text(max_temp_day_1_hour_22,apparent_temperature);
+                set_text(rain_day_1_hour_22,rain);
+                set_text(showers_day_1_hour_22,showers);
+                set_text(snowfall_day_1_hour_22,snowfall);
+                set_text(uv_day_1_hour_22,uv_index);
+                set_text(wind_direction_day_1_hour_22,wind_direction_10m);
+                set_text(wind_speed_day_1_hour_22,wind_speed_10m);
+            }else if(hour==23){
+                set_7_day_weather_type(weather_day_1_hour_23,Integer.parseInt(weather_code));
+                set_text(max_temp_day_1_hour_23,apparent_temperature);
+                set_text(rain_day_1_hour_23,rain);
+                set_text(showers_day_1_hour_23,showers);
+                set_text(snowfall_day_1_hour_23,snowfall);
+                set_text(uv_day_1_hour_23,uv_index);
+                set_text(wind_direction_day_1_hour_23,wind_direction_10m);
+                set_text(wind_speed_day_1_hour_23,wind_speed_10m);
+            }else if(hour==24){
+                set_7_day_weather_type(weather_day_1_hour_24,Integer.parseInt(weather_code));
+                set_text(max_temp_day_1_hour_24,apparent_temperature);
+                set_text(rain_day_1_hour_24,rain);
+                set_text(showers_day_1_hour_24,showers);
+                set_text(snowfall_day_1_hour_24,snowfall);
+                set_text(uv_day_1_hour_24,uv_index);
+                set_text(wind_direction_day_1_hour_24,wind_direction_10m);
+                set_text(wind_speed_day_1_hour_24,wind_speed_10m);
+            }
         }else if(day==1){
-
+            if(hour==1){
+                set_7_day_weather_type(weather_day_2_hour_1,Integer.parseInt(weather_code));
+                set_text(max_temp_day_2_hour_1,apparent_temperature);
+                set_text(rain_day_2_hour_1,rain);
+                set_text(showers_day_2_hour_1,showers);
+                set_text(snowfall_day_2_hour_1,snowfall);
+                set_text(uv_day_2_hour_1,uv_index);
+                set_text(wind_direction_day_2_hour_1,wind_direction_10m);
+                set_text(wind_speed_day_2_hour_1,wind_speed_10m);
+            }else if(hour==2){
+                set_7_day_weather_type(weather_day_2_hour_2,Integer.parseInt(weather_code));
+                set_text(max_temp_day_2_hour_2,apparent_temperature);
+                set_text(rain_day_2_hour_2,rain);
+                set_text(showers_day_2_hour_2,showers);
+                set_text(snowfall_day_2_hour_2,snowfall);
+                set_text(uv_day_2_hour_2,uv_index);
+                set_text(wind_direction_day_2_hour_2,wind_direction_10m);
+                set_text(wind_speed_day_2_hour_2,wind_speed_10m);
+            }else if(hour==3){
+                set_7_day_weather_type(weather_day_2_hour_3,Integer.parseInt(weather_code));
+                set_text(max_temp_day_2_hour_3,apparent_temperature);
+                set_text(rain_day_2_hour_3,rain);
+                set_text(showers_day_2_hour_3,showers);
+                set_text(snowfall_day_2_hour_3,snowfall);
+                set_text(uv_day_2_hour_3,uv_index);
+                set_text(wind_direction_day_2_hour_3,wind_direction_10m);
+                set_text(wind_speed_day_2_hour_3,wind_speed_10m);
+            }else if(hour==4){
+                set_7_day_weather_type(weather_day_2_hour_4,Integer.parseInt(weather_code));
+                set_text(max_temp_day_2_hour_4,apparent_temperature);
+                set_text(rain_day_2_hour_4,rain);
+                set_text(showers_day_2_hour_4,showers);
+                set_text(snowfall_day_2_hour_4,snowfall);
+                set_text(uv_day_2_hour_4,uv_index);
+                set_text(wind_direction_day_2_hour_4,wind_direction_10m);
+                set_text(wind_speed_day_2_hour_4,wind_speed_10m);
+            }else if(hour==5){
+                set_7_day_weather_type(weather_day_2_hour_5,Integer.parseInt(weather_code));
+                set_text(max_temp_day_2_hour_5,apparent_temperature);
+                set_text(rain_day_2_hour_5,rain);
+                set_text(showers_day_2_hour_5,showers);
+                set_text(snowfall_day_2_hour_5,snowfall);
+                set_text(uv_day_2_hour_5,uv_index);
+                set_text(wind_direction_day_2_hour_5,wind_direction_10m);
+                set_text(wind_speed_day_2_hour_5,wind_speed_10m);
+            }else if(hour==6){
+                set_7_day_weather_type(weather_day_2_hour_6,Integer.parseInt(weather_code));
+                set_text(max_temp_day_2_hour_6,apparent_temperature);
+                set_text(rain_day_2_hour_6,rain);
+                set_text(showers_day_2_hour_6,showers);
+                set_text(snowfall_day_2_hour_6,snowfall);
+                set_text(uv_day_2_hour_6,uv_index);
+                set_text(wind_direction_day_2_hour_6,wind_direction_10m);
+                set_text(wind_speed_day_2_hour_6,wind_speed_10m);
+            }else if(hour==7){
+                set_7_day_weather_type(weather_day_2_hour_7,Integer.parseInt(weather_code));
+                set_text(max_temp_day_2_hour_7,apparent_temperature);
+                set_text(rain_day_2_hour_7,rain);
+                set_text(showers_day_2_hour_7,showers);
+                set_text(snowfall_day_2_hour_7,snowfall);
+                set_text(uv_day_2_hour_7,uv_index);
+                set_text(wind_direction_day_2_hour_7,wind_direction_10m);
+                set_text(wind_speed_day_2_hour_7,wind_speed_10m);
+            }else if(hour==8){
+                set_7_day_weather_type(weather_day_2_hour_8,Integer.parseInt(weather_code));
+                set_text(max_temp_day_2_hour_8,apparent_temperature);
+                set_text(rain_day_2_hour_8,rain);
+                set_text(showers_day_2_hour_8,showers);
+                set_text(snowfall_day_2_hour_8,snowfall);
+                set_text(uv_day_2_hour_8,uv_index);
+                set_text(wind_direction_day_2_hour_8,wind_direction_10m);
+                set_text(wind_speed_day_2_hour_8,wind_speed_10m);
+            }else if(hour==9){
+                set_7_day_weather_type(weather_day_2_hour_9,Integer.parseInt(weather_code));
+                set_text(max_temp_day_2_hour_9,apparent_temperature);
+                set_text(rain_day_2_hour_9,rain);
+                set_text(showers_day_2_hour_9,showers);
+                set_text(snowfall_day_2_hour_9,snowfall);
+                set_text(uv_day_2_hour_9,uv_index);
+                set_text(wind_direction_day_2_hour_9,wind_direction_10m);
+                set_text(wind_speed_day_2_hour_9,wind_speed_10m);
+            }else if(hour==10){
+                set_7_day_weather_type(weather_day_2_hour_10,Integer.parseInt(weather_code));
+                set_text(max_temp_day_2_hour_10,apparent_temperature);
+                set_text(rain_day_2_hour_10,rain);
+                set_text(showers_day_2_hour_10,showers);
+                set_text(snowfall_day_2_hour_10,snowfall);
+                set_text(uv_day_2_hour_10,uv_index);
+                set_text(wind_direction_day_2_hour_10,wind_direction_10m);
+                set_text(wind_speed_day_2_hour_10,wind_speed_10m);
+            }else if(hour==11){
+                set_7_day_weather_type(weather_day_2_hour_11,Integer.parseInt(weather_code));
+                set_text(max_temp_day_2_hour_11,apparent_temperature);
+                set_text(rain_day_2_hour_11,rain);
+                set_text(showers_day_2_hour_11,showers);
+                set_text(snowfall_day_2_hour_11,snowfall);
+                set_text(uv_day_2_hour_11,uv_index);
+                set_text(wind_direction_day_2_hour_11,wind_direction_10m);
+                set_text(wind_speed_day_2_hour_11,wind_speed_10m);
+            }else if(hour==12){
+                set_7_day_weather_type(weather_day_2_hour_12,Integer.parseInt(weather_code));
+                set_text(max_temp_day_2_hour_12,apparent_temperature);
+                set_text(rain_day_2_hour_12,rain);
+                set_text(showers_day_2_hour_12,showers);
+                set_text(snowfall_day_2_hour_12,snowfall);
+                set_text(uv_day_2_hour_12,uv_index);
+                set_text(wind_direction_day_2_hour_12,wind_direction_10m);
+                set_text(wind_speed_day_2_hour_12,wind_speed_10m);
+            }else if(hour==13){
+                set_7_day_weather_type(weather_day_2_hour_13,Integer.parseInt(weather_code));
+                set_text(max_temp_day_2_hour_13,apparent_temperature);
+                set_text(rain_day_2_hour_13,rain);
+                set_text(showers_day_2_hour_13,showers);
+                set_text(snowfall_day_2_hour_13,snowfall);
+                set_text(uv_day_2_hour_13,uv_index);
+                set_text(wind_direction_day_2_hour_13,wind_direction_10m);
+                set_text(wind_speed_day_2_hour_13,wind_speed_10m);
+            }else if(hour==14){
+                set_7_day_weather_type(weather_day_2_hour_14,Integer.parseInt(weather_code));
+                set_text(max_temp_day_2_hour_14,apparent_temperature);
+                set_text(rain_day_2_hour_14,rain);
+                set_text(showers_day_2_hour_14,showers);
+                set_text(snowfall_day_2_hour_14,snowfall);
+                set_text(uv_day_2_hour_14,uv_index);
+                set_text(wind_direction_day_2_hour_14,wind_direction_10m);
+                set_text(wind_speed_day_2_hour_14,wind_speed_10m);
+            }else if(hour==15){
+                set_7_day_weather_type(weather_day_2_hour_15,Integer.parseInt(weather_code));
+                set_text(max_temp_day_2_hour_15,apparent_temperature);
+                set_text(rain_day_2_hour_15,rain);
+                set_text(showers_day_2_hour_15,showers);
+                set_text(snowfall_day_2_hour_15,snowfall);
+                set_text(uv_day_2_hour_15,uv_index);
+                set_text(wind_direction_day_2_hour_15,wind_direction_10m);
+                set_text(wind_speed_day_2_hour_15,wind_speed_10m);
+            }else if(hour==16){
+                set_7_day_weather_type(weather_day_2_hour_16,Integer.parseInt(weather_code));
+                set_text(max_temp_day_2_hour_16,apparent_temperature);
+                set_text(rain_day_2_hour_16,rain);
+                set_text(showers_day_2_hour_16,showers);
+                set_text(snowfall_day_2_hour_16,snowfall);
+                set_text(uv_day_2_hour_16,uv_index);
+                set_text(wind_direction_day_2_hour_16,wind_direction_10m);
+                set_text(wind_speed_day_2_hour_16,wind_speed_10m);
+            }else if(hour==17){
+                set_7_day_weather_type(weather_day_2_hour_17,Integer.parseInt(weather_code));
+                set_text(max_temp_day_2_hour_17,apparent_temperature);
+                set_text(rain_day_2_hour_17,rain);
+                set_text(showers_day_2_hour_17,showers);
+                set_text(snowfall_day_2_hour_17,snowfall);
+                set_text(uv_day_2_hour_17,uv_index);
+                set_text(wind_direction_day_2_hour_17,wind_direction_10m);
+                set_text(wind_speed_day_2_hour_17,wind_speed_10m);
+            }else if(hour==18){
+                set_7_day_weather_type(weather_day_2_hour_18,Integer.parseInt(weather_code));
+                set_text(max_temp_day_2_hour_18,apparent_temperature);
+                set_text(rain_day_2_hour_18,rain);
+                set_text(showers_day_2_hour_18,showers);
+                set_text(snowfall_day_2_hour_18,snowfall);
+                set_text(uv_day_2_hour_18,uv_index);
+                set_text(wind_direction_day_2_hour_18,wind_direction_10m);
+                set_text(wind_speed_day_2_hour_18,wind_speed_10m);
+            }else if(hour==19){
+                set_7_day_weather_type(weather_day_2_hour_19,Integer.parseInt(weather_code));
+                set_text(max_temp_day_2_hour_19,apparent_temperature);
+                set_text(rain_day_2_hour_19,rain);
+                set_text(showers_day_2_hour_19,showers);
+                set_text(snowfall_day_2_hour_19,snowfall);
+                set_text(uv_day_2_hour_19,uv_index);
+                set_text(wind_direction_day_2_hour_19,wind_direction_10m);
+                set_text(wind_speed_day_2_hour_19,wind_speed_10m);
+            }else if(hour==20){
+                set_7_day_weather_type(weather_day_2_hour_20,Integer.parseInt(weather_code));
+                set_text(max_temp_day_2_hour_20,apparent_temperature);
+                set_text(rain_day_2_hour_20,rain);
+                set_text(showers_day_2_hour_20,showers);
+                set_text(snowfall_day_2_hour_20,snowfall);
+                set_text(uv_day_2_hour_20,uv_index);
+                set_text(wind_direction_day_2_hour_20,wind_direction_10m);
+                set_text(wind_speed_day_2_hour_20,wind_speed_10m);
+            }else if(hour==21){
+                set_7_day_weather_type(weather_day_2_hour_21,Integer.parseInt(weather_code));
+                set_text(max_temp_day_2_hour_21,apparent_temperature);
+                set_text(rain_day_2_hour_21,rain);
+                set_text(showers_day_2_hour_21,showers);
+                set_text(snowfall_day_2_hour_21,snowfall);
+                set_text(uv_day_2_hour_21,uv_index);
+                set_text(wind_direction_day_2_hour_21,wind_direction_10m);
+                set_text(wind_speed_day_2_hour_21,wind_speed_10m);
+            }else if(hour==22){
+                set_7_day_weather_type(weather_day_2_hour_22,Integer.parseInt(weather_code));
+                set_text(max_temp_day_2_hour_22,apparent_temperature);
+                set_text(rain_day_2_hour_22,rain);
+                set_text(showers_day_2_hour_22,showers);
+                set_text(snowfall_day_2_hour_22,snowfall);
+                set_text(uv_day_2_hour_22,uv_index);
+                set_text(wind_direction_day_2_hour_22,wind_direction_10m);
+                set_text(wind_speed_day_2_hour_22,wind_speed_10m);
+            }else if(hour==23){
+                set_7_day_weather_type(weather_day_2_hour_23,Integer.parseInt(weather_code));
+                set_text(max_temp_day_2_hour_23,apparent_temperature);
+                set_text(rain_day_2_hour_23,rain);
+                set_text(showers_day_2_hour_23,showers);
+                set_text(snowfall_day_2_hour_23,snowfall);
+                set_text(uv_day_2_hour_23,uv_index);
+                set_text(wind_direction_day_2_hour_23,wind_direction_10m);
+                set_text(wind_speed_day_2_hour_23,wind_speed_10m);
+            }else if(hour==24){
+                set_7_day_weather_type(weather_day_2_hour_24,Integer.parseInt(weather_code));
+                set_text(max_temp_day_2_hour_24,apparent_temperature);
+                set_text(rain_day_2_hour_24,rain);
+                set_text(showers_day_2_hour_24,showers);
+                set_text(snowfall_day_2_hour_24,snowfall);
+                set_text(uv_day_2_hour_24,uv_index);
+                set_text(wind_direction_day_2_hour_24,wind_direction_10m);
+                set_text(wind_speed_day_2_hour_24,wind_speed_10m);
+            }
         }else if(day==2){
-
+            if(hour==1){
+                set_7_day_weather_type(weather_day_3_hour_1,Integer.parseInt(weather_code));
+                set_text(max_temp_day_3_hour_1,apparent_temperature);
+                set_text(rain_day_3_hour_1,rain);
+                set_text(showers_day_3_hour_1,showers);
+                set_text(snowfall_day_3_hour_1,snowfall);
+                set_text(uv_day_3_hour_1,uv_index);
+                set_text(wind_direction_day_3_hour_1,wind_direction_10m);
+                set_text(wind_speed_day_3_hour_1,wind_speed_10m);
+            }else if(hour==2){
+                set_7_day_weather_type(weather_day_3_hour_2,Integer.parseInt(weather_code));
+                set_text(max_temp_day_3_hour_2,apparent_temperature);
+                set_text(rain_day_3_hour_2,rain);
+                set_text(showers_day_3_hour_2,showers);
+                set_text(snowfall_day_3_hour_2,snowfall);
+                set_text(uv_day_3_hour_2,uv_index);
+                set_text(wind_direction_day_3_hour_2,wind_direction_10m);
+                set_text(wind_speed_day_3_hour_2,wind_speed_10m);
+            }else if(hour==3){
+                set_7_day_weather_type(weather_day_3_hour_3,Integer.parseInt(weather_code));
+                set_text(max_temp_day_3_hour_3,apparent_temperature);
+                set_text(rain_day_3_hour_3,rain);
+                set_text(showers_day_3_hour_3,showers);
+                set_text(snowfall_day_3_hour_3,snowfall);
+                set_text(uv_day_3_hour_3,uv_index);
+                set_text(wind_direction_day_3_hour_3,wind_direction_10m);
+                set_text(wind_speed_day_3_hour_3,wind_speed_10m);
+            }else if(hour==4){
+                set_7_day_weather_type(weather_day_3_hour_4,Integer.parseInt(weather_code));
+                set_text(max_temp_day_3_hour_4,apparent_temperature);
+                set_text(rain_day_3_hour_4,rain);
+                set_text(showers_day_3_hour_4,showers);
+                set_text(snowfall_day_3_hour_4,snowfall);
+                set_text(uv_day_3_hour_4,uv_index);
+                set_text(wind_direction_day_3_hour_4,wind_direction_10m);
+                set_text(wind_speed_day_3_hour_4,wind_speed_10m);
+            }else if(hour==5){
+                set_7_day_weather_type(weather_day_3_hour_5,Integer.parseInt(weather_code));
+                set_text(max_temp_day_3_hour_5,apparent_temperature);
+                set_text(rain_day_3_hour_5,rain);
+                set_text(showers_day_3_hour_5,showers);
+                set_text(snowfall_day_3_hour_5,snowfall);
+                set_text(uv_day_3_hour_5,uv_index);
+                set_text(wind_direction_day_3_hour_5,wind_direction_10m);
+                set_text(wind_speed_day_3_hour_5,wind_speed_10m);
+            }else if(hour==6){
+                set_7_day_weather_type(weather_day_3_hour_6,Integer.parseInt(weather_code));
+                set_text(max_temp_day_3_hour_6,apparent_temperature);
+                set_text(rain_day_3_hour_6,rain);
+                set_text(showers_day_3_hour_6,showers);
+                set_text(snowfall_day_3_hour_6,snowfall);
+                set_text(uv_day_3_hour_6,uv_index);
+                set_text(wind_direction_day_3_hour_6,wind_direction_10m);
+                set_text(wind_speed_day_3_hour_6,wind_speed_10m);
+            }else if(hour==7){
+                set_7_day_weather_type(weather_day_3_hour_7,Integer.parseInt(weather_code));
+                set_text(max_temp_day_3_hour_7,apparent_temperature);
+                set_text(rain_day_3_hour_7,rain);
+                set_text(showers_day_3_hour_7,showers);
+                set_text(snowfall_day_3_hour_7,snowfall);
+                set_text(uv_day_3_hour_7,uv_index);
+                set_text(wind_direction_day_3_hour_7,wind_direction_10m);
+                set_text(wind_speed_day_3_hour_7,wind_speed_10m);
+            }else if(hour==8){
+                set_7_day_weather_type(weather_day_3_hour_8,Integer.parseInt(weather_code));
+                set_text(max_temp_day_3_hour_8,apparent_temperature);
+                set_text(rain_day_3_hour_8,rain);
+                set_text(showers_day_3_hour_8,showers);
+                set_text(snowfall_day_3_hour_8,snowfall);
+                set_text(uv_day_3_hour_8,uv_index);
+                set_text(wind_direction_day_3_hour_8,wind_direction_10m);
+                set_text(wind_speed_day_3_hour_8,wind_speed_10m);
+            }else if(hour==9){
+                set_7_day_weather_type(weather_day_3_hour_9,Integer.parseInt(weather_code));
+                set_text(max_temp_day_3_hour_9,apparent_temperature);
+                set_text(rain_day_3_hour_9,rain);
+                set_text(showers_day_3_hour_9,showers);
+                set_text(snowfall_day_3_hour_9,snowfall);
+                set_text(uv_day_3_hour_9,uv_index);
+                set_text(wind_direction_day_3_hour_9,wind_direction_10m);
+                set_text(wind_speed_day_3_hour_9,wind_speed_10m);
+            }else if(hour==10){
+                set_7_day_weather_type(weather_day_3_hour_10,Integer.parseInt(weather_code));
+                set_text(max_temp_day_3_hour_10,apparent_temperature);
+                set_text(rain_day_3_hour_10,rain);
+                set_text(showers_day_3_hour_10,showers);
+                set_text(snowfall_day_3_hour_10,snowfall);
+                set_text(uv_day_3_hour_10,uv_index);
+                set_text(wind_direction_day_3_hour_10,wind_direction_10m);
+                set_text(wind_speed_day_3_hour_10,wind_speed_10m);
+            }else if(hour==11){
+                set_7_day_weather_type(weather_day_3_hour_11,Integer.parseInt(weather_code));
+                set_text(max_temp_day_3_hour_11,apparent_temperature);
+                set_text(rain_day_3_hour_11,rain);
+                set_text(showers_day_3_hour_11,showers);
+                set_text(snowfall_day_3_hour_11,snowfall);
+                set_text(uv_day_3_hour_11,uv_index);
+                set_text(wind_direction_day_3_hour_11,wind_direction_10m);
+                set_text(wind_speed_day_3_hour_11,wind_speed_10m);
+            }else if(hour==12){
+                set_7_day_weather_type(weather_day_3_hour_12,Integer.parseInt(weather_code));
+                set_text(max_temp_day_3_hour_12,apparent_temperature);
+                set_text(rain_day_3_hour_12,rain);
+                set_text(showers_day_3_hour_12,showers);
+                set_text(snowfall_day_3_hour_12,snowfall);
+                set_text(uv_day_3_hour_12,uv_index);
+                set_text(wind_direction_day_3_hour_12,wind_direction_10m);
+                set_text(wind_speed_day_3_hour_12,wind_speed_10m);
+            }else if(hour==13){
+                set_7_day_weather_type(weather_day_3_hour_13,Integer.parseInt(weather_code));
+                set_text(max_temp_day_3_hour_13,apparent_temperature);
+                set_text(rain_day_3_hour_13,rain);
+                set_text(showers_day_3_hour_13,showers);
+                set_text(snowfall_day_3_hour_13,snowfall);
+                set_text(uv_day_3_hour_13,uv_index);
+                set_text(wind_direction_day_3_hour_13,wind_direction_10m);
+                set_text(wind_speed_day_3_hour_13,wind_speed_10m);
+            }else if(hour==14){
+                set_7_day_weather_type(weather_day_3_hour_14,Integer.parseInt(weather_code));
+                set_text(max_temp_day_3_hour_14,apparent_temperature);
+                set_text(rain_day_3_hour_14,rain);
+                set_text(showers_day_3_hour_14,showers);
+                set_text(snowfall_day_3_hour_14,snowfall);
+                set_text(uv_day_3_hour_14,uv_index);
+                set_text(wind_direction_day_3_hour_14,wind_direction_10m);
+                set_text(wind_speed_day_3_hour_14,wind_speed_10m);
+            }else if(hour==15){
+                set_7_day_weather_type(weather_day_3_hour_15,Integer.parseInt(weather_code));
+                set_text(max_temp_day_3_hour_15,apparent_temperature);
+                set_text(rain_day_3_hour_15,rain);
+                set_text(showers_day_3_hour_15,showers);
+                set_text(snowfall_day_3_hour_15,snowfall);
+                set_text(uv_day_3_hour_15,uv_index);
+                set_text(wind_direction_day_3_hour_15,wind_direction_10m);
+                set_text(wind_speed_day_3_hour_15,wind_speed_10m);
+            }else if(hour==16){
+                set_7_day_weather_type(weather_day_3_hour_16,Integer.parseInt(weather_code));
+                set_text(max_temp_day_3_hour_16,apparent_temperature);
+                set_text(rain_day_3_hour_16,rain);
+                set_text(showers_day_3_hour_16,showers);
+                set_text(snowfall_day_3_hour_16,snowfall);
+                set_text(uv_day_3_hour_16,uv_index);
+                set_text(wind_direction_day_3_hour_16,wind_direction_10m);
+                set_text(wind_speed_day_3_hour_16,wind_speed_10m);
+            }else if(hour==17){
+                set_7_day_weather_type(weather_day_3_hour_17,Integer.parseInt(weather_code));
+                set_text(max_temp_day_3_hour_17,apparent_temperature);
+                set_text(rain_day_3_hour_17,rain);
+                set_text(showers_day_3_hour_17,showers);
+                set_text(snowfall_day_3_hour_17,snowfall);
+                set_text(uv_day_3_hour_17,uv_index);
+                set_text(wind_direction_day_3_hour_17,wind_direction_10m);
+                set_text(wind_speed_day_3_hour_17,wind_speed_10m);
+            }else if(hour==18){
+                set_7_day_weather_type(weather_day_3_hour_18,Integer.parseInt(weather_code));
+                set_text(max_temp_day_3_hour_18,apparent_temperature);
+                set_text(rain_day_3_hour_18,rain);
+                set_text(showers_day_3_hour_18,showers);
+                set_text(snowfall_day_3_hour_18,snowfall);
+                set_text(uv_day_3_hour_18,uv_index);
+                set_text(wind_direction_day_3_hour_18,wind_direction_10m);
+                set_text(wind_speed_day_3_hour_18,wind_speed_10m);
+            }else if(hour==19){
+                set_7_day_weather_type(weather_day_3_hour_19,Integer.parseInt(weather_code));
+                set_text(max_temp_day_3_hour_19,apparent_temperature);
+                set_text(rain_day_3_hour_19,rain);
+                set_text(showers_day_3_hour_19,showers);
+                set_text(snowfall_day_3_hour_19,snowfall);
+                set_text(uv_day_3_hour_19,uv_index);
+                set_text(wind_direction_day_3_hour_19,wind_direction_10m);
+                set_text(wind_speed_day_3_hour_19,wind_speed_10m);
+            }else if(hour==20){
+                set_7_day_weather_type(weather_day_3_hour_20,Integer.parseInt(weather_code));
+                set_text(max_temp_day_3_hour_20,apparent_temperature);
+                set_text(rain_day_3_hour_20,rain);
+                set_text(showers_day_3_hour_20,showers);
+                set_text(snowfall_day_3_hour_20,snowfall);
+                set_text(uv_day_3_hour_20,uv_index);
+                set_text(wind_direction_day_3_hour_20,wind_direction_10m);
+                set_text(wind_speed_day_3_hour_20,wind_speed_10m);
+            }else if(hour==21){
+                set_7_day_weather_type(weather_day_3_hour_21,Integer.parseInt(weather_code));
+                set_text(max_temp_day_3_hour_21,apparent_temperature);
+                set_text(rain_day_3_hour_21,rain);
+                set_text(showers_day_3_hour_21,showers);
+                set_text(snowfall_day_3_hour_21,snowfall);
+                set_text(uv_day_3_hour_21,uv_index);
+                set_text(wind_direction_day_3_hour_21,wind_direction_10m);
+                set_text(wind_speed_day_3_hour_21,wind_speed_10m);
+            }else if(hour==22){
+                set_7_day_weather_type(weather_day_3_hour_22,Integer.parseInt(weather_code));
+                set_text(max_temp_day_3_hour_22,apparent_temperature);
+                set_text(rain_day_3_hour_22,rain);
+                set_text(showers_day_3_hour_22,showers);
+                set_text(snowfall_day_3_hour_22,snowfall);
+                set_text(uv_day_3_hour_22,uv_index);
+                set_text(wind_direction_day_3_hour_22,wind_direction_10m);
+                set_text(wind_speed_day_3_hour_22,wind_speed_10m);
+            }else if(hour==23){
+                set_7_day_weather_type(weather_day_3_hour_23,Integer.parseInt(weather_code));
+                set_text(max_temp_day_3_hour_23,apparent_temperature);
+                set_text(rain_day_3_hour_23,rain);
+                set_text(showers_day_3_hour_23,showers);
+                set_text(snowfall_day_3_hour_23,snowfall);
+                set_text(uv_day_3_hour_23,uv_index);
+                set_text(wind_direction_day_3_hour_23,wind_direction_10m);
+                set_text(wind_speed_day_3_hour_23,wind_speed_10m);
+            }else if(hour==24){
+                set_7_day_weather_type(weather_day_3_hour_24,Integer.parseInt(weather_code));
+                set_text(max_temp_day_3_hour_24,apparent_temperature);
+                set_text(rain_day_3_hour_24,rain);
+                set_text(showers_day_3_hour_24,showers);
+                set_text(snowfall_day_3_hour_24,snowfall);
+                set_text(uv_day_3_hour_24,uv_index);
+                set_text(wind_direction_day_3_hour_24,wind_direction_10m);
+                set_text(wind_speed_day_3_hour_24,wind_speed_10m);
+            }
         }else if(day==3){
-
+            if(hour==1){
+                set_7_day_weather_type(weather_day_4_hour_1,Integer.parseInt(weather_code));
+                set_text(max_temp_day_4_hour_1,apparent_temperature);
+                set_text(rain_day_4_hour_1,rain);
+                set_text(showers_day_4_hour_1,showers);
+                set_text(snowfall_day_4_hour_1,snowfall);
+                set_text(uv_day_4_hour_1,uv_index);
+                set_text(wind_direction_day_4_hour_1,wind_direction_10m);
+                set_text(wind_speed_day_4_hour_1,wind_speed_10m);
+            }else if(hour==2){
+                set_7_day_weather_type(weather_day_4_hour_2,Integer.parseInt(weather_code));
+                set_text(max_temp_day_4_hour_2,apparent_temperature);
+                set_text(rain_day_4_hour_2,rain);
+                set_text(showers_day_4_hour_2,showers);
+                set_text(snowfall_day_4_hour_2,snowfall);
+                set_text(uv_day_4_hour_2,uv_index);
+                set_text(wind_direction_day_4_hour_2,wind_direction_10m);
+                set_text(wind_speed_day_4_hour_2,wind_speed_10m);
+            }else if(hour==3){
+                set_7_day_weather_type(weather_day_4_hour_3,Integer.parseInt(weather_code));
+                set_text(max_temp_day_4_hour_3,apparent_temperature);
+                set_text(rain_day_4_hour_3,rain);
+                set_text(showers_day_4_hour_3,showers);
+                set_text(snowfall_day_4_hour_3,snowfall);
+                set_text(uv_day_4_hour_3,uv_index);
+                set_text(wind_direction_day_4_hour_3,wind_direction_10m);
+                set_text(wind_speed_day_4_hour_3,wind_speed_10m);
+            }else if(hour==4){
+                set_7_day_weather_type(weather_day_4_hour_4,Integer.parseInt(weather_code));
+                set_text(max_temp_day_4_hour_4,apparent_temperature);
+                set_text(rain_day_4_hour_4,rain);
+                set_text(showers_day_4_hour_4,showers);
+                set_text(snowfall_day_4_hour_4,snowfall);
+                set_text(uv_day_4_hour_4,uv_index);
+                set_text(wind_direction_day_4_hour_4,wind_direction_10m);
+                set_text(wind_speed_day_4_hour_4,wind_speed_10m);
+            }else if(hour==5){
+                set_7_day_weather_type(weather_day_4_hour_5,Integer.parseInt(weather_code));
+                set_text(max_temp_day_4_hour_5,apparent_temperature);
+                set_text(rain_day_4_hour_5,rain);
+                set_text(showers_day_4_hour_5,showers);
+                set_text(snowfall_day_4_hour_5,snowfall);
+                set_text(uv_day_4_hour_5,uv_index);
+                set_text(wind_direction_day_4_hour_5,wind_direction_10m);
+                set_text(wind_speed_day_4_hour_5,wind_speed_10m);
+            }else if(hour==6){
+                set_7_day_weather_type(weather_day_4_hour_6,Integer.parseInt(weather_code));
+                set_text(max_temp_day_4_hour_6,apparent_temperature);
+                set_text(rain_day_4_hour_6,rain);
+                set_text(showers_day_4_hour_6,showers);
+                set_text(snowfall_day_4_hour_6,snowfall);
+                set_text(uv_day_4_hour_6,uv_index);
+                set_text(wind_direction_day_4_hour_6,wind_direction_10m);
+                set_text(wind_speed_day_4_hour_6,wind_speed_10m);
+            }else if(hour==7){
+                set_7_day_weather_type(weather_day_4_hour_7,Integer.parseInt(weather_code));
+                set_text(max_temp_day_4_hour_7,apparent_temperature);
+                set_text(rain_day_4_hour_7,rain);
+                set_text(showers_day_4_hour_7,showers);
+                set_text(snowfall_day_4_hour_7,snowfall);
+                set_text(uv_day_4_hour_7,uv_index);
+                set_text(wind_direction_day_4_hour_7,wind_direction_10m);
+                set_text(wind_speed_day_4_hour_7,wind_speed_10m);
+            }else if(hour==8){
+                set_7_day_weather_type(weather_day_4_hour_8,Integer.parseInt(weather_code));
+                set_text(max_temp_day_4_hour_8,apparent_temperature);
+                set_text(rain_day_4_hour_8,rain);
+                set_text(showers_day_4_hour_8,showers);
+                set_text(snowfall_day_4_hour_8,snowfall);
+                set_text(uv_day_4_hour_8,uv_index);
+                set_text(wind_direction_day_4_hour_8,wind_direction_10m);
+                set_text(wind_speed_day_4_hour_8,wind_speed_10m);
+            }else if(hour==9){
+                set_7_day_weather_type(weather_day_4_hour_9,Integer.parseInt(weather_code));
+                set_text(max_temp_day_4_hour_9,apparent_temperature);
+                set_text(rain_day_4_hour_9,rain);
+                set_text(showers_day_4_hour_9,showers);
+                set_text(snowfall_day_4_hour_9,snowfall);
+                set_text(uv_day_4_hour_9,uv_index);
+                set_text(wind_direction_day_4_hour_9,wind_direction_10m);
+                set_text(wind_speed_day_4_hour_9,wind_speed_10m);
+            }else if(hour==10){
+                set_7_day_weather_type(weather_day_4_hour_10,Integer.parseInt(weather_code));
+                set_text(max_temp_day_4_hour_10,apparent_temperature);
+                set_text(rain_day_4_hour_10,rain);
+                set_text(showers_day_4_hour_10,showers);
+                set_text(snowfall_day_4_hour_10,snowfall);
+                set_text(uv_day_4_hour_10,uv_index);
+                set_text(wind_direction_day_4_hour_10,wind_direction_10m);
+                set_text(wind_speed_day_4_hour_10,wind_speed_10m);
+            }else if(hour==11){
+                set_7_day_weather_type(weather_day_4_hour_11,Integer.parseInt(weather_code));
+                set_text(max_temp_day_4_hour_11,apparent_temperature);
+                set_text(rain_day_4_hour_11,rain);
+                set_text(showers_day_4_hour_11,showers);
+                set_text(snowfall_day_4_hour_11,snowfall);
+                set_text(uv_day_4_hour_11,uv_index);
+                set_text(wind_direction_day_4_hour_11,wind_direction_10m);
+                set_text(wind_speed_day_4_hour_11,wind_speed_10m);
+            }else if(hour==12){
+                set_7_day_weather_type(weather_day_4_hour_12,Integer.parseInt(weather_code));
+                set_text(max_temp_day_4_hour_12,apparent_temperature);
+                set_text(rain_day_4_hour_12,rain);
+                set_text(showers_day_4_hour_12,showers);
+                set_text(snowfall_day_4_hour_12,snowfall);
+                set_text(uv_day_4_hour_12,uv_index);
+                set_text(wind_direction_day_4_hour_12,wind_direction_10m);
+                set_text(wind_speed_day_4_hour_12,wind_speed_10m);
+            }else if(hour==13){
+                set_7_day_weather_type(weather_day_4_hour_13,Integer.parseInt(weather_code));
+                set_text(max_temp_day_4_hour_13,apparent_temperature);
+                set_text(rain_day_4_hour_13,rain);
+                set_text(showers_day_4_hour_13,showers);
+                set_text(snowfall_day_4_hour_13,snowfall);
+                set_text(uv_day_4_hour_13,uv_index);
+                set_text(wind_direction_day_4_hour_13,wind_direction_10m);
+                set_text(wind_speed_day_4_hour_13,wind_speed_10m);
+            }else if(hour==14){
+                set_7_day_weather_type(weather_day_4_hour_14,Integer.parseInt(weather_code));
+                set_text(max_temp_day_4_hour_14,apparent_temperature);
+                set_text(rain_day_4_hour_14,rain);
+                set_text(showers_day_4_hour_14,showers);
+                set_text(snowfall_day_4_hour_14,snowfall);
+                set_text(uv_day_4_hour_14,uv_index);
+                set_text(wind_direction_day_4_hour_14,wind_direction_10m);
+                set_text(wind_speed_day_4_hour_14,wind_speed_10m);
+            }else if(hour==15){
+                set_7_day_weather_type(weather_day_4_hour_15,Integer.parseInt(weather_code));
+                set_text(max_temp_day_4_hour_15,apparent_temperature);
+                set_text(rain_day_4_hour_15,rain);
+                set_text(showers_day_4_hour_15,showers);
+                set_text(snowfall_day_4_hour_15,snowfall);
+                set_text(uv_day_4_hour_15,uv_index);
+                set_text(wind_direction_day_4_hour_15,wind_direction_10m);
+                set_text(wind_speed_day_4_hour_15,wind_speed_10m);
+            }else if(hour==16){
+                set_7_day_weather_type(weather_day_4_hour_16,Integer.parseInt(weather_code));
+                set_text(max_temp_day_4_hour_16,apparent_temperature);
+                set_text(rain_day_4_hour_16,rain);
+                set_text(showers_day_4_hour_16,showers);
+                set_text(snowfall_day_4_hour_16,snowfall);
+                set_text(uv_day_4_hour_16,uv_index);
+                set_text(wind_direction_day_4_hour_16,wind_direction_10m);
+                set_text(wind_speed_day_4_hour_16,wind_speed_10m);
+            }else if(hour==17){
+                set_7_day_weather_type(weather_day_4_hour_17,Integer.parseInt(weather_code));
+                set_text(max_temp_day_4_hour_17,apparent_temperature);
+                set_text(rain_day_4_hour_17,rain);
+                set_text(showers_day_4_hour_17,showers);
+                set_text(snowfall_day_4_hour_17,snowfall);
+                set_text(uv_day_4_hour_17,uv_index);
+                set_text(wind_direction_day_4_hour_17,wind_direction_10m);
+                set_text(wind_speed_day_4_hour_17,wind_speed_10m);
+            }else if(hour==18){
+                set_7_day_weather_type(weather_day_4_hour_18,Integer.parseInt(weather_code));
+                set_text(max_temp_day_4_hour_18,apparent_temperature);
+                set_text(rain_day_4_hour_18,rain);
+                set_text(showers_day_4_hour_18,showers);
+                set_text(snowfall_day_4_hour_18,snowfall);
+                set_text(uv_day_4_hour_18,uv_index);
+                set_text(wind_direction_day_4_hour_18,wind_direction_10m);
+                set_text(wind_speed_day_4_hour_18,wind_speed_10m);
+            }else if(hour==19){
+                set_7_day_weather_type(weather_day_4_hour_19,Integer.parseInt(weather_code));
+                set_text(max_temp_day_4_hour_19,apparent_temperature);
+                set_text(rain_day_4_hour_19,rain);
+                set_text(showers_day_4_hour_19,showers);
+                set_text(snowfall_day_4_hour_19,snowfall);
+                set_text(uv_day_4_hour_19,uv_index);
+                set_text(wind_direction_day_4_hour_19,wind_direction_10m);
+                set_text(wind_speed_day_4_hour_19,wind_speed_10m);
+            }else if(hour==20){
+                set_7_day_weather_type(weather_day_4_hour_20,Integer.parseInt(weather_code));
+                set_text(max_temp_day_4_hour_20,apparent_temperature);
+                set_text(rain_day_4_hour_20,rain);
+                set_text(showers_day_4_hour_20,showers);
+                set_text(snowfall_day_4_hour_20,snowfall);
+                set_text(uv_day_4_hour_20,uv_index);
+                set_text(wind_direction_day_4_hour_20,wind_direction_10m);
+                set_text(wind_speed_day_4_hour_20,wind_speed_10m);
+            }else if(hour==21){
+                set_7_day_weather_type(weather_day_4_hour_21,Integer.parseInt(weather_code));
+                set_text(max_temp_day_4_hour_21,apparent_temperature);
+                set_text(rain_day_4_hour_21,rain);
+                set_text(showers_day_4_hour_21,showers);
+                set_text(snowfall_day_4_hour_21,snowfall);
+                set_text(uv_day_4_hour_21,uv_index);
+                set_text(wind_direction_day_4_hour_21,wind_direction_10m);
+                set_text(wind_speed_day_4_hour_21,wind_speed_10m);
+            }else if(hour==22){
+                set_7_day_weather_type(weather_day_4_hour_22,Integer.parseInt(weather_code));
+                set_text(max_temp_day_4_hour_22,apparent_temperature);
+                set_text(rain_day_4_hour_22,rain);
+                set_text(showers_day_4_hour_22,showers);
+                set_text(snowfall_day_4_hour_22,snowfall);
+                set_text(uv_day_4_hour_22,uv_index);
+                set_text(wind_direction_day_4_hour_22,wind_direction_10m);
+                set_text(wind_speed_day_4_hour_22,wind_speed_10m);
+            }else if(hour==23){
+                set_7_day_weather_type(weather_day_4_hour_23,Integer.parseInt(weather_code));
+                set_text(max_temp_day_4_hour_23,apparent_temperature);
+                set_text(rain_day_4_hour_23,rain);
+                set_text(showers_day_4_hour_23,showers);
+                set_text(snowfall_day_4_hour_23,snowfall);
+                set_text(uv_day_4_hour_23,uv_index);
+                set_text(wind_direction_day_4_hour_23,wind_direction_10m);
+                set_text(wind_speed_day_4_hour_23,wind_speed_10m);
+            }else if(hour==24){
+                set_7_day_weather_type(weather_day_4_hour_24,Integer.parseInt(weather_code));
+                set_text(max_temp_day_4_hour_24,apparent_temperature);
+                set_text(rain_day_4_hour_24,rain);
+                set_text(showers_day_4_hour_24,showers);
+                set_text(snowfall_day_4_hour_24,snowfall);
+                set_text(uv_day_4_hour_24,uv_index);
+                set_text(wind_direction_day_4_hour_24,wind_direction_10m);
+                set_text(wind_speed_day_4_hour_24,wind_speed_10m);
+            }
         }else if(day==4){
-
+            if(hour==1){
+                set_7_day_weather_type(weather_day_5_hour_1,Integer.parseInt(weather_code));
+                set_text(max_temp_day_5_hour_1,apparent_temperature);
+                set_text(rain_day_5_hour_1,rain);
+                set_text(showers_day_5_hour_1,showers);
+                set_text(snowfall_day_5_hour_1,snowfall);
+                set_text(uv_day_5_hour_1,uv_index);
+                set_text(wind_direction_day_5_hour_1,wind_direction_10m);
+                set_text(wind_speed_day_5_hour_1,wind_speed_10m);
+            }else if(hour==2){
+                set_7_day_weather_type(weather_day_5_hour_2,Integer.parseInt(weather_code));
+                set_text(max_temp_day_5_hour_2,apparent_temperature);
+                set_text(rain_day_5_hour_2,rain);
+                set_text(showers_day_5_hour_2,showers);
+                set_text(snowfall_day_5_hour_2,snowfall);
+                set_text(uv_day_5_hour_2,uv_index);
+                set_text(wind_direction_day_5_hour_2,wind_direction_10m);
+                set_text(wind_speed_day_5_hour_2,wind_speed_10m);
+            }else if(hour==3){
+                set_7_day_weather_type(weather_day_5_hour_3,Integer.parseInt(weather_code));
+                set_text(max_temp_day_5_hour_3,apparent_temperature);
+                set_text(rain_day_5_hour_3,rain);
+                set_text(showers_day_5_hour_3,showers);
+                set_text(snowfall_day_5_hour_3,snowfall);
+                set_text(uv_day_5_hour_3,uv_index);
+                set_text(wind_direction_day_5_hour_3,wind_direction_10m);
+                set_text(wind_speed_day_5_hour_3,wind_speed_10m);
+            }else if(hour==4){
+                set_7_day_weather_type(weather_day_5_hour_4,Integer.parseInt(weather_code));
+                set_text(max_temp_day_5_hour_4,apparent_temperature);
+                set_text(rain_day_5_hour_4,rain);
+                set_text(showers_day_5_hour_4,showers);
+                set_text(snowfall_day_5_hour_4,snowfall);
+                set_text(uv_day_5_hour_4,uv_index);
+                set_text(wind_direction_day_5_hour_4,wind_direction_10m);
+                set_text(wind_speed_day_5_hour_4,wind_speed_10m);
+            }else if(hour==5){
+                set_7_day_weather_type(weather_day_5_hour_5,Integer.parseInt(weather_code));
+                set_text(max_temp_day_5_hour_5,apparent_temperature);
+                set_text(rain_day_5_hour_5,rain);
+                set_text(showers_day_5_hour_5,showers);
+                set_text(snowfall_day_5_hour_5,snowfall);
+                set_text(uv_day_5_hour_5,uv_index);
+                set_text(wind_direction_day_5_hour_5,wind_direction_10m);
+                set_text(wind_speed_day_5_hour_5,wind_speed_10m);
+            }else if(hour==6){
+                set_7_day_weather_type(weather_day_5_hour_6,Integer.parseInt(weather_code));
+                set_text(max_temp_day_5_hour_6,apparent_temperature);
+                set_text(rain_day_5_hour_6,rain);
+                set_text(showers_day_5_hour_6,showers);
+                set_text(snowfall_day_5_hour_6,snowfall);
+                set_text(uv_day_5_hour_6,uv_index);
+                set_text(wind_direction_day_5_hour_6,wind_direction_10m);
+                set_text(wind_speed_day_5_hour_6,wind_speed_10m);
+            }else if(hour==7){
+                set_7_day_weather_type(weather_day_5_hour_7,Integer.parseInt(weather_code));
+                set_text(max_temp_day_5_hour_7,apparent_temperature);
+                set_text(rain_day_5_hour_7,rain);
+                set_text(showers_day_5_hour_7,showers);
+                set_text(snowfall_day_5_hour_7,snowfall);
+                set_text(uv_day_5_hour_7,uv_index);
+                set_text(wind_direction_day_5_hour_7,wind_direction_10m);
+                set_text(wind_speed_day_5_hour_7,wind_speed_10m);
+            }else if(hour==8){
+                set_7_day_weather_type(weather_day_5_hour_8,Integer.parseInt(weather_code));
+                set_text(max_temp_day_5_hour_8,apparent_temperature);
+                set_text(rain_day_5_hour_8,rain);
+                set_text(showers_day_5_hour_8,showers);
+                set_text(snowfall_day_5_hour_8,snowfall);
+                set_text(uv_day_5_hour_8,uv_index);
+                set_text(wind_direction_day_5_hour_8,wind_direction_10m);
+                set_text(wind_speed_day_5_hour_8,wind_speed_10m);
+            }else if(hour==9){
+                set_7_day_weather_type(weather_day_5_hour_9,Integer.parseInt(weather_code));
+                set_text(max_temp_day_5_hour_9,apparent_temperature);
+                set_text(rain_day_5_hour_9,rain);
+                set_text(showers_day_5_hour_9,showers);
+                set_text(snowfall_day_5_hour_9,snowfall);
+                set_text(uv_day_5_hour_9,uv_index);
+                set_text(wind_direction_day_5_hour_9,wind_direction_10m);
+                set_text(wind_speed_day_5_hour_9,wind_speed_10m);
+            }else if(hour==10){
+                set_7_day_weather_type(weather_day_5_hour_10,Integer.parseInt(weather_code));
+                set_text(max_temp_day_5_hour_10,apparent_temperature);
+                set_text(rain_day_5_hour_10,rain);
+                set_text(showers_day_5_hour_10,showers);
+                set_text(snowfall_day_5_hour_10,snowfall);
+                set_text(uv_day_5_hour_10,uv_index);
+                set_text(wind_direction_day_5_hour_10,wind_direction_10m);
+                set_text(wind_speed_day_5_hour_10,wind_speed_10m);
+            }else if(hour==11){
+                set_7_day_weather_type(weather_day_5_hour_11,Integer.parseInt(weather_code));
+                set_text(max_temp_day_5_hour_11,apparent_temperature);
+                set_text(rain_day_5_hour_11,rain);
+                set_text(showers_day_5_hour_11,showers);
+                set_text(snowfall_day_5_hour_11,snowfall);
+                set_text(uv_day_5_hour_11,uv_index);
+                set_text(wind_direction_day_5_hour_11,wind_direction_10m);
+                set_text(wind_speed_day_5_hour_11,wind_speed_10m);
+            }else if(hour==12){
+                set_7_day_weather_type(weather_day_5_hour_12,Integer.parseInt(weather_code));
+                set_text(max_temp_day_5_hour_12,apparent_temperature);
+                set_text(rain_day_5_hour_12,rain);
+                set_text(showers_day_5_hour_12,showers);
+                set_text(snowfall_day_5_hour_12,snowfall);
+                set_text(uv_day_5_hour_12,uv_index);
+                set_text(wind_direction_day_5_hour_12,wind_direction_10m);
+                set_text(wind_speed_day_5_hour_12,wind_speed_10m);
+            }else if(hour==13){
+                set_7_day_weather_type(weather_day_5_hour_13,Integer.parseInt(weather_code));
+                set_text(max_temp_day_5_hour_13,apparent_temperature);
+                set_text(rain_day_5_hour_13,rain);
+                set_text(showers_day_5_hour_13,showers);
+                set_text(snowfall_day_5_hour_13,snowfall);
+                set_text(uv_day_5_hour_13,uv_index);
+                set_text(wind_direction_day_5_hour_13,wind_direction_10m);
+                set_text(wind_speed_day_5_hour_13,wind_speed_10m);
+            }else if(hour==14){
+                set_7_day_weather_type(weather_day_5_hour_14,Integer.parseInt(weather_code));
+                set_text(max_temp_day_5_hour_14,apparent_temperature);
+                set_text(rain_day_5_hour_14,rain);
+                set_text(showers_day_5_hour_14,showers);
+                set_text(snowfall_day_5_hour_14,snowfall);
+                set_text(uv_day_5_hour_14,uv_index);
+                set_text(wind_direction_day_5_hour_14,wind_direction_10m);
+                set_text(wind_speed_day_5_hour_14,wind_speed_10m);
+            }else if(hour==15){
+                set_7_day_weather_type(weather_day_5_hour_15,Integer.parseInt(weather_code));
+                set_text(max_temp_day_5_hour_15,apparent_temperature);
+                set_text(rain_day_5_hour_15,rain);
+                set_text(showers_day_5_hour_15,showers);
+                set_text(snowfall_day_5_hour_15,snowfall);
+                set_text(uv_day_5_hour_15,uv_index);
+                set_text(wind_direction_day_5_hour_15,wind_direction_10m);
+                set_text(wind_speed_day_5_hour_15,wind_speed_10m);
+            }else if(hour==16){
+                set_7_day_weather_type(weather_day_5_hour_16,Integer.parseInt(weather_code));
+                set_text(max_temp_day_5_hour_16,apparent_temperature);
+                set_text(rain_day_5_hour_16,rain);
+                set_text(showers_day_5_hour_16,showers);
+                set_text(snowfall_day_5_hour_16,snowfall);
+                set_text(uv_day_5_hour_16,uv_index);
+                set_text(wind_direction_day_5_hour_16,wind_direction_10m);
+                set_text(wind_speed_day_5_hour_16,wind_speed_10m);
+            }else if(hour==17){
+                set_7_day_weather_type(weather_day_5_hour_17,Integer.parseInt(weather_code));
+                set_text(max_temp_day_5_hour_17,apparent_temperature);
+                set_text(rain_day_5_hour_17,rain);
+                set_text(showers_day_5_hour_17,showers);
+                set_text(snowfall_day_5_hour_17,snowfall);
+                set_text(uv_day_5_hour_17,uv_index);
+                set_text(wind_direction_day_5_hour_17,wind_direction_10m);
+                set_text(wind_speed_day_5_hour_17,wind_speed_10m);
+            }else if(hour==18){
+                set_7_day_weather_type(weather_day_5_hour_18,Integer.parseInt(weather_code));
+                set_text(max_temp_day_5_hour_18,apparent_temperature);
+                set_text(rain_day_5_hour_18,rain);
+                set_text(showers_day_5_hour_18,showers);
+                set_text(snowfall_day_5_hour_18,snowfall);
+                set_text(uv_day_5_hour_18,uv_index);
+                set_text(wind_direction_day_5_hour_18,wind_direction_10m);
+                set_text(wind_speed_day_5_hour_18,wind_speed_10m);
+            }else if(hour==19){
+                set_7_day_weather_type(weather_day_5_hour_19,Integer.parseInt(weather_code));
+                set_text(max_temp_day_5_hour_19,apparent_temperature);
+                set_text(rain_day_5_hour_19,rain);
+                set_text(showers_day_5_hour_19,showers);
+                set_text(snowfall_day_5_hour_19,snowfall);
+                set_text(uv_day_5_hour_19,uv_index);
+                set_text(wind_direction_day_5_hour_19,wind_direction_10m);
+                set_text(wind_speed_day_5_hour_19,wind_speed_10m);
+            }else if(hour==20){
+                set_7_day_weather_type(weather_day_5_hour_20,Integer.parseInt(weather_code));
+                set_text(max_temp_day_5_hour_20,apparent_temperature);
+                set_text(rain_day_5_hour_20,rain);
+                set_text(showers_day_5_hour_20,showers);
+                set_text(snowfall_day_5_hour_20,snowfall);
+                set_text(uv_day_5_hour_20,uv_index);
+                set_text(wind_direction_day_5_hour_20,wind_direction_10m);
+                set_text(wind_speed_day_5_hour_20,wind_speed_10m);
+            }else if(hour==21){
+                set_7_day_weather_type(weather_day_5_hour_21,Integer.parseInt(weather_code));
+                set_text(max_temp_day_5_hour_21,apparent_temperature);
+                set_text(rain_day_5_hour_21,rain);
+                set_text(showers_day_5_hour_21,showers);
+                set_text(snowfall_day_5_hour_21,snowfall);
+                set_text(uv_day_5_hour_21,uv_index);
+                set_text(wind_direction_day_5_hour_21,wind_direction_10m);
+                set_text(wind_speed_day_5_hour_21,wind_speed_10m);
+            }else if(hour==22){
+                set_7_day_weather_type(weather_day_5_hour_22,Integer.parseInt(weather_code));
+                set_text(max_temp_day_5_hour_22,apparent_temperature);
+                set_text(rain_day_5_hour_22,rain);
+                set_text(showers_day_5_hour_22,showers);
+                set_text(snowfall_day_5_hour_22,snowfall);
+                set_text(uv_day_5_hour_22,uv_index);
+                set_text(wind_direction_day_5_hour_22,wind_direction_10m);
+                set_text(wind_speed_day_5_hour_22,wind_speed_10m);
+            }else if(hour==23){
+                set_7_day_weather_type(weather_day_5_hour_23,Integer.parseInt(weather_code));
+                set_text(max_temp_day_5_hour_23,apparent_temperature);
+                set_text(rain_day_5_hour_23,rain);
+                set_text(showers_day_5_hour_23,showers);
+                set_text(snowfall_day_5_hour_23,snowfall);
+                set_text(uv_day_5_hour_23,uv_index);
+                set_text(wind_direction_day_5_hour_23,wind_direction_10m);
+                set_text(wind_speed_day_5_hour_23,wind_speed_10m);
+            }else if(hour==24){
+                set_7_day_weather_type(weather_day_5_hour_24,Integer.parseInt(weather_code));
+                set_text(max_temp_day_5_hour_24,apparent_temperature);
+                set_text(rain_day_5_hour_24,rain);
+                set_text(showers_day_5_hour_24,showers);
+                set_text(snowfall_day_5_hour_24,snowfall);
+                set_text(uv_day_5_hour_24,uv_index);
+                set_text(wind_direction_day_5_hour_24,wind_direction_10m);
+                set_text(wind_speed_day_5_hour_24,wind_speed_10m);
+            }
         }else if(day==5){
-
+            if(hour==1){
+                set_7_day_weather_type(weather_day_6_hour_1,Integer.parseInt(weather_code));
+                set_text(max_temp_day_6_hour_1,apparent_temperature);
+                set_text(rain_day_6_hour_1,rain);
+                set_text(showers_day_6_hour_1,showers);
+                set_text(snowfall_day_6_hour_1,snowfall);
+                set_text(uv_day_6_hour_1,uv_index);
+                set_text(wind_direction_day_6_hour_1,wind_direction_10m);
+                set_text(wind_speed_day_6_hour_1,wind_speed_10m);
+            }else if(hour==2){
+                set_7_day_weather_type(weather_day_6_hour_2,Integer.parseInt(weather_code));
+                set_text(max_temp_day_6_hour_2,apparent_temperature);
+                set_text(rain_day_6_hour_2,rain);
+                set_text(showers_day_6_hour_2,showers);
+                set_text(snowfall_day_6_hour_2,snowfall);
+                set_text(uv_day_6_hour_2,uv_index);
+                set_text(wind_direction_day_6_hour_2,wind_direction_10m);
+                set_text(wind_speed_day_6_hour_2,wind_speed_10m);
+            }else if(hour==3){
+                set_7_day_weather_type(weather_day_6_hour_3,Integer.parseInt(weather_code));
+                set_text(max_temp_day_6_hour_3,apparent_temperature);
+                set_text(rain_day_6_hour_3,rain);
+                set_text(showers_day_6_hour_3,showers);
+                set_text(snowfall_day_6_hour_3,snowfall);
+                set_text(uv_day_6_hour_3,uv_index);
+                set_text(wind_direction_day_6_hour_3,wind_direction_10m);
+                set_text(wind_speed_day_6_hour_3,wind_speed_10m);
+            }else if(hour==4){
+                set_7_day_weather_type(weather_day_6_hour_4,Integer.parseInt(weather_code));
+                set_text(max_temp_day_6_hour_4,apparent_temperature);
+                set_text(rain_day_6_hour_4,rain);
+                set_text(showers_day_6_hour_4,showers);
+                set_text(snowfall_day_6_hour_4,snowfall);
+                set_text(uv_day_6_hour_4,uv_index);
+                set_text(wind_direction_day_6_hour_4,wind_direction_10m);
+                set_text(wind_speed_day_6_hour_4,wind_speed_10m);
+            }else if(hour==5){
+                set_7_day_weather_type(weather_day_6_hour_5,Integer.parseInt(weather_code));
+                set_text(max_temp_day_6_hour_5,apparent_temperature);
+                set_text(rain_day_6_hour_5,rain);
+                set_text(showers_day_6_hour_5,showers);
+                set_text(snowfall_day_6_hour_5,snowfall);
+                set_text(uv_day_6_hour_5,uv_index);
+                set_text(wind_direction_day_6_hour_5,wind_direction_10m);
+                set_text(wind_speed_day_6_hour_5,wind_speed_10m);
+            }else if(hour==6){
+                set_7_day_weather_type(weather_day_6_hour_6,Integer.parseInt(weather_code));
+                set_text(max_temp_day_6_hour_6,apparent_temperature);
+                set_text(rain_day_6_hour_6,rain);
+                set_text(showers_day_6_hour_6,showers);
+                set_text(snowfall_day_6_hour_6,snowfall);
+                set_text(uv_day_6_hour_6,uv_index);
+                set_text(wind_direction_day_6_hour_6,wind_direction_10m);
+                set_text(wind_speed_day_6_hour_6,wind_speed_10m);
+            }else if(hour==7){
+                set_7_day_weather_type(weather_day_6_hour_7,Integer.parseInt(weather_code));
+                set_text(max_temp_day_6_hour_7,apparent_temperature);
+                set_text(rain_day_6_hour_7,rain);
+                set_text(showers_day_6_hour_7,showers);
+                set_text(snowfall_day_6_hour_7,snowfall);
+                set_text(uv_day_6_hour_7,uv_index);
+                set_text(wind_direction_day_6_hour_7,wind_direction_10m);
+                set_text(wind_speed_day_6_hour_7,wind_speed_10m);
+            }else if(hour==8){
+                set_7_day_weather_type(weather_day_6_hour_8,Integer.parseInt(weather_code));
+                set_text(max_temp_day_6_hour_8,apparent_temperature);
+                set_text(rain_day_6_hour_8,rain);
+                set_text(showers_day_6_hour_8,showers);
+                set_text(snowfall_day_6_hour_8,snowfall);
+                set_text(uv_day_6_hour_8,uv_index);
+                set_text(wind_direction_day_6_hour_8,wind_direction_10m);
+                set_text(wind_speed_day_6_hour_8,wind_speed_10m);
+            }else if(hour==9){
+                set_7_day_weather_type(weather_day_6_hour_9,Integer.parseInt(weather_code));
+                set_text(max_temp_day_6_hour_9,apparent_temperature);
+                set_text(rain_day_6_hour_9,rain);
+                set_text(showers_day_6_hour_9,showers);
+                set_text(snowfall_day_6_hour_9,snowfall);
+                set_text(uv_day_6_hour_9,uv_index);
+                set_text(wind_direction_day_6_hour_9,wind_direction_10m);
+                set_text(wind_speed_day_6_hour_9,wind_speed_10m);
+            }else if(hour==10){
+                set_7_day_weather_type(weather_day_6_hour_10,Integer.parseInt(weather_code));
+                set_text(max_temp_day_6_hour_10,apparent_temperature);
+                set_text(rain_day_6_hour_10,rain);
+                set_text(showers_day_6_hour_10,showers);
+                set_text(snowfall_day_6_hour_10,snowfall);
+                set_text(uv_day_6_hour_10,uv_index);
+                set_text(wind_direction_day_6_hour_10,wind_direction_10m);
+                set_text(wind_speed_day_6_hour_10,wind_speed_10m);
+            }else if(hour==11){
+                set_7_day_weather_type(weather_day_6_hour_11,Integer.parseInt(weather_code));
+                set_text(max_temp_day_6_hour_11,apparent_temperature);
+                set_text(rain_day_6_hour_11,rain);
+                set_text(showers_day_6_hour_11,showers);
+                set_text(snowfall_day_6_hour_11,snowfall);
+                set_text(uv_day_6_hour_11,uv_index);
+                set_text(wind_direction_day_6_hour_11,wind_direction_10m);
+                set_text(wind_speed_day_6_hour_11,wind_speed_10m);
+            }else if(hour==12){
+                set_7_day_weather_type(weather_day_6_hour_12,Integer.parseInt(weather_code));
+                set_text(max_temp_day_6_hour_12,apparent_temperature);
+                set_text(rain_day_6_hour_12,rain);
+                set_text(showers_day_6_hour_12,showers);
+                set_text(snowfall_day_6_hour_12,snowfall);
+                set_text(uv_day_6_hour_12,uv_index);
+                set_text(wind_direction_day_6_hour_12,wind_direction_10m);
+                set_text(wind_speed_day_6_hour_12,wind_speed_10m);
+            }else if(hour==13){
+                set_7_day_weather_type(weather_day_6_hour_13,Integer.parseInt(weather_code));
+                set_text(max_temp_day_6_hour_13,apparent_temperature);
+                set_text(rain_day_6_hour_13,rain);
+                set_text(showers_day_6_hour_13,showers);
+                set_text(snowfall_day_6_hour_13,snowfall);
+                set_text(uv_day_6_hour_13,uv_index);
+                set_text(wind_direction_day_6_hour_13,wind_direction_10m);
+                set_text(wind_speed_day_6_hour_13,wind_speed_10m);
+            }else if(hour==14){
+                set_7_day_weather_type(weather_day_6_hour_14,Integer.parseInt(weather_code));
+                set_text(max_temp_day_6_hour_14,apparent_temperature);
+                set_text(rain_day_6_hour_14,rain);
+                set_text(showers_day_6_hour_14,showers);
+                set_text(snowfall_day_6_hour_14,snowfall);
+                set_text(uv_day_6_hour_14,uv_index);
+                set_text(wind_direction_day_6_hour_14,wind_direction_10m);
+                set_text(wind_speed_day_6_hour_14,wind_speed_10m);
+            }else if(hour==15){
+                set_7_day_weather_type(weather_day_6_hour_15,Integer.parseInt(weather_code));
+                set_text(max_temp_day_6_hour_15,apparent_temperature);
+                set_text(rain_day_6_hour_15,rain);
+                set_text(showers_day_6_hour_15,showers);
+                set_text(snowfall_day_6_hour_15,snowfall);
+                set_text(uv_day_6_hour_15,uv_index);
+                set_text(wind_direction_day_6_hour_15,wind_direction_10m);
+                set_text(wind_speed_day_6_hour_15,wind_speed_10m);
+            }else if(hour==16){
+                set_7_day_weather_type(weather_day_6_hour_16,Integer.parseInt(weather_code));
+                set_text(max_temp_day_6_hour_16,apparent_temperature);
+                set_text(rain_day_6_hour_16,rain);
+                set_text(showers_day_6_hour_16,showers);
+                set_text(snowfall_day_6_hour_16,snowfall);
+                set_text(uv_day_6_hour_16,uv_index);
+                set_text(wind_direction_day_6_hour_16,wind_direction_10m);
+                set_text(wind_speed_day_6_hour_16,wind_speed_10m);
+            }else if(hour==17){
+                set_7_day_weather_type(weather_day_6_hour_17,Integer.parseInt(weather_code));
+                set_text(max_temp_day_6_hour_17,apparent_temperature);
+                set_text(rain_day_6_hour_17,rain);
+                set_text(showers_day_6_hour_17,showers);
+                set_text(snowfall_day_6_hour_17,snowfall);
+                set_text(uv_day_6_hour_17,uv_index);
+                set_text(wind_direction_day_6_hour_17,wind_direction_10m);
+                set_text(wind_speed_day_6_hour_17,wind_speed_10m);
+            }else if(hour==18){
+                set_7_day_weather_type(weather_day_6_hour_18,Integer.parseInt(weather_code));
+                set_text(max_temp_day_6_hour_18,apparent_temperature);
+                set_text(rain_day_6_hour_18,rain);
+                set_text(showers_day_6_hour_18,showers);
+                set_text(snowfall_day_6_hour_18,snowfall);
+                set_text(uv_day_6_hour_18,uv_index);
+                set_text(wind_direction_day_6_hour_18,wind_direction_10m);
+                set_text(wind_speed_day_6_hour_18,wind_speed_10m);
+            }else if(hour==19){
+                set_7_day_weather_type(weather_day_6_hour_19,Integer.parseInt(weather_code));
+                set_text(max_temp_day_6_hour_19,apparent_temperature);
+                set_text(rain_day_6_hour_19,rain);
+                set_text(showers_day_6_hour_19,showers);
+                set_text(snowfall_day_6_hour_19,snowfall);
+                set_text(uv_day_6_hour_19,uv_index);
+                set_text(wind_direction_day_6_hour_19,wind_direction_10m);
+                set_text(wind_speed_day_6_hour_19,wind_speed_10m);
+            }else if(hour==20){
+                set_7_day_weather_type(weather_day_6_hour_20,Integer.parseInt(weather_code));
+                set_text(max_temp_day_6_hour_20,apparent_temperature);
+                set_text(rain_day_6_hour_20,rain);
+                set_text(showers_day_6_hour_20,showers);
+                set_text(snowfall_day_6_hour_20,snowfall);
+                set_text(uv_day_6_hour_20,uv_index);
+                set_text(wind_direction_day_6_hour_20,wind_direction_10m);
+                set_text(wind_speed_day_6_hour_20,wind_speed_10m);
+            }else if(hour==21){
+                set_7_day_weather_type(weather_day_6_hour_21,Integer.parseInt(weather_code));
+                set_text(max_temp_day_6_hour_21,apparent_temperature);
+                set_text(rain_day_6_hour_21,rain);
+                set_text(showers_day_6_hour_21,showers);
+                set_text(snowfall_day_6_hour_21,snowfall);
+                set_text(uv_day_6_hour_21,uv_index);
+                set_text(wind_direction_day_6_hour_21,wind_direction_10m);
+                set_text(wind_speed_day_6_hour_21,wind_speed_10m);
+            }else if(hour==22){
+                set_7_day_weather_type(weather_day_6_hour_22,Integer.parseInt(weather_code));
+                set_text(max_temp_day_6_hour_22,apparent_temperature);
+                set_text(rain_day_6_hour_22,rain);
+                set_text(showers_day_6_hour_22,showers);
+                set_text(snowfall_day_6_hour_22,snowfall);
+                set_text(uv_day_6_hour_22,uv_index);
+                set_text(wind_direction_day_6_hour_22,wind_direction_10m);
+                set_text(wind_speed_day_6_hour_22,wind_speed_10m);
+            }else if(hour==23){
+                set_7_day_weather_type(weather_day_6_hour_23,Integer.parseInt(weather_code));
+                set_text(max_temp_day_6_hour_23,apparent_temperature);
+                set_text(rain_day_6_hour_23,rain);
+                set_text(showers_day_6_hour_23,showers);
+                set_text(snowfall_day_6_hour_23,snowfall);
+                set_text(uv_day_6_hour_23,uv_index);
+                set_text(wind_direction_day_6_hour_23,wind_direction_10m);
+                set_text(wind_speed_day_6_hour_23,wind_speed_10m);
+            }else if(hour==24){
+                set_7_day_weather_type(weather_day_6_hour_24,Integer.parseInt(weather_code));
+                set_text(max_temp_day_6_hour_24,apparent_temperature);
+                set_text(rain_day_6_hour_24,rain);
+                set_text(showers_day_6_hour_24,showers);
+                set_text(snowfall_day_6_hour_24,snowfall);
+                set_text(uv_day_6_hour_24,uv_index);
+                set_text(wind_direction_day_6_hour_24,wind_direction_10m);
+                set_text(wind_speed_day_6_hour_24,wind_speed_10m);
+            }
         }else if(day==6){
-
+            if(hour==1){
+                set_7_day_weather_type(weather_day_7_hour_1,Integer.parseInt(weather_code));
+                set_text(max_temp_day_7_hour_1,apparent_temperature);
+                set_text(rain_day_7_hour_1,rain);
+                set_text(showers_day_7_hour_1,showers);
+                set_text(snowfall_day_7_hour_1,snowfall);
+                set_text(uv_day_7_hour_1,uv_index);
+                set_text(wind_direction_day_7_hour_1,wind_direction_10m);
+                set_text(wind_speed_day_7_hour_1,wind_speed_10m);
+            }else if(hour==2){
+                set_7_day_weather_type(weather_day_7_hour_2,Integer.parseInt(weather_code));
+                set_text(max_temp_day_7_hour_2,apparent_temperature);
+                set_text(rain_day_7_hour_2,rain);
+                set_text(showers_day_7_hour_2,showers);
+                set_text(snowfall_day_7_hour_2,snowfall);
+                set_text(uv_day_7_hour_2,uv_index);
+                set_text(wind_direction_day_7_hour_2,wind_direction_10m);
+                set_text(wind_speed_day_7_hour_2,wind_speed_10m);
+            }else if(hour==3){
+                set_7_day_weather_type(weather_day_7_hour_3,Integer.parseInt(weather_code));
+                set_text(max_temp_day_7_hour_3,apparent_temperature);
+                set_text(rain_day_7_hour_3,rain);
+                set_text(showers_day_7_hour_3,showers);
+                set_text(snowfall_day_7_hour_3,snowfall);
+                set_text(uv_day_7_hour_3,uv_index);
+                set_text(wind_direction_day_7_hour_3,wind_direction_10m);
+                set_text(wind_speed_day_7_hour_3,wind_speed_10m);
+            }else if(hour==4){
+                set_7_day_weather_type(weather_day_7_hour_4,Integer.parseInt(weather_code));
+                set_text(max_temp_day_7_hour_4,apparent_temperature);
+                set_text(rain_day_7_hour_4,rain);
+                set_text(showers_day_7_hour_4,showers);
+                set_text(snowfall_day_7_hour_4,snowfall);
+                set_text(uv_day_7_hour_4,uv_index);
+                set_text(wind_direction_day_7_hour_4,wind_direction_10m);
+                set_text(wind_speed_day_7_hour_4,wind_speed_10m);
+            }else if(hour==5){
+                set_7_day_weather_type(weather_day_7_hour_5,Integer.parseInt(weather_code));
+                set_text(max_temp_day_7_hour_5,apparent_temperature);
+                set_text(rain_day_7_hour_5,rain);
+                set_text(showers_day_7_hour_5,showers);
+                set_text(snowfall_day_7_hour_5,snowfall);
+                set_text(uv_day_7_hour_5,uv_index);
+                set_text(wind_direction_day_7_hour_5,wind_direction_10m);
+                set_text(wind_speed_day_7_hour_5,wind_speed_10m);
+            }else if(hour==6){
+                set_7_day_weather_type(weather_day_7_hour_6,Integer.parseInt(weather_code));
+                set_text(max_temp_day_7_hour_6,apparent_temperature);
+                set_text(rain_day_7_hour_6,rain);
+                set_text(showers_day_7_hour_6,showers);
+                set_text(snowfall_day_7_hour_6,snowfall);
+                set_text(uv_day_7_hour_6,uv_index);
+                set_text(wind_direction_day_7_hour_6,wind_direction_10m);
+                set_text(wind_speed_day_7_hour_6,wind_speed_10m);
+            }else if(hour==7){
+                set_7_day_weather_type(weather_day_7_hour_7,Integer.parseInt(weather_code));
+                set_text(max_temp_day_7_hour_7,apparent_temperature);
+                set_text(rain_day_7_hour_7,rain);
+                set_text(showers_day_7_hour_7,showers);
+                set_text(snowfall_day_7_hour_7,snowfall);
+                set_text(uv_day_7_hour_7,uv_index);
+                set_text(wind_direction_day_7_hour_7,wind_direction_10m);
+                set_text(wind_speed_day_7_hour_7,wind_speed_10m);
+            }else if(hour==8){
+                set_7_day_weather_type(weather_day_7_hour_8,Integer.parseInt(weather_code));
+                set_text(max_temp_day_7_hour_8,apparent_temperature);
+                set_text(rain_day_7_hour_8,rain);
+                set_text(showers_day_7_hour_8,showers);
+                set_text(snowfall_day_7_hour_8,snowfall);
+                set_text(uv_day_7_hour_8,uv_index);
+                set_text(wind_direction_day_7_hour_8,wind_direction_10m);
+                set_text(wind_speed_day_7_hour_8,wind_speed_10m);
+            }else if(hour==9){
+                set_7_day_weather_type(weather_day_7_hour_9,Integer.parseInt(weather_code));
+                set_text(max_temp_day_7_hour_9,apparent_temperature);
+                set_text(rain_day_7_hour_9,rain);
+                set_text(showers_day_7_hour_9,showers);
+                set_text(snowfall_day_7_hour_9,snowfall);
+                set_text(uv_day_7_hour_9,uv_index);
+                set_text(wind_direction_day_7_hour_9,wind_direction_10m);
+                set_text(wind_speed_day_7_hour_9,wind_speed_10m);
+            }else if(hour==10){
+                set_7_day_weather_type(weather_day_7_hour_10,Integer.parseInt(weather_code));
+                set_text(max_temp_day_7_hour_10,apparent_temperature);
+                set_text(rain_day_7_hour_10,rain);
+                set_text(showers_day_7_hour_10,showers);
+                set_text(snowfall_day_7_hour_10,snowfall);
+                set_text(uv_day_7_hour_10,uv_index);
+                set_text(wind_direction_day_7_hour_10,wind_direction_10m);
+                set_text(wind_speed_day_7_hour_10,wind_speed_10m);
+            }else if(hour==11){
+                set_7_day_weather_type(weather_day_7_hour_11,Integer.parseInt(weather_code));
+                set_text(max_temp_day_7_hour_11,apparent_temperature);
+                set_text(rain_day_7_hour_11,rain);
+                set_text(showers_day_7_hour_11,showers);
+                set_text(snowfall_day_7_hour_11,snowfall);
+                set_text(uv_day_7_hour_11,uv_index);
+                set_text(wind_direction_day_7_hour_11,wind_direction_10m);
+                set_text(wind_speed_day_7_hour_11,wind_speed_10m);
+            }else if(hour==12){
+                set_7_day_weather_type(weather_day_7_hour_12,Integer.parseInt(weather_code));
+                set_text(max_temp_day_7_hour_12,apparent_temperature);
+                set_text(rain_day_7_hour_12,rain);
+                set_text(showers_day_7_hour_12,showers);
+                set_text(snowfall_day_7_hour_12,snowfall);
+                set_text(uv_day_7_hour_12,uv_index);
+                set_text(wind_direction_day_7_hour_12,wind_direction_10m);
+                set_text(wind_speed_day_7_hour_12,wind_speed_10m);
+            }else if(hour==13){
+                set_7_day_weather_type(weather_day_7_hour_13,Integer.parseInt(weather_code));
+                set_text(max_temp_day_7_hour_13,apparent_temperature);
+                set_text(rain_day_7_hour_13,rain);
+                set_text(showers_day_7_hour_13,showers);
+                set_text(snowfall_day_7_hour_13,snowfall);
+                set_text(uv_day_7_hour_13,uv_index);
+                set_text(wind_direction_day_7_hour_13,wind_direction_10m);
+                set_text(wind_speed_day_7_hour_13,wind_speed_10m);
+            }else if(hour==14){
+                set_7_day_weather_type(weather_day_7_hour_14,Integer.parseInt(weather_code));
+                set_text(max_temp_day_7_hour_14,apparent_temperature);
+                set_text(rain_day_7_hour_14,rain);
+                set_text(showers_day_7_hour_14,showers);
+                set_text(snowfall_day_7_hour_14,snowfall);
+                set_text(uv_day_7_hour_14,uv_index);
+                set_text(wind_direction_day_7_hour_14,wind_direction_10m);
+                set_text(wind_speed_day_7_hour_14,wind_speed_10m);
+            }else if(hour==15){
+                set_7_day_weather_type(weather_day_7_hour_15,Integer.parseInt(weather_code));
+                set_text(max_temp_day_7_hour_15,apparent_temperature);
+                set_text(rain_day_7_hour_15,rain);
+                set_text(showers_day_7_hour_15,showers);
+                set_text(snowfall_day_7_hour_15,snowfall);
+                set_text(uv_day_7_hour_15,uv_index);
+                set_text(wind_direction_day_7_hour_15,wind_direction_10m);
+                set_text(wind_speed_day_7_hour_15,wind_speed_10m);
+            }else if(hour==16){
+                set_7_day_weather_type(weather_day_7_hour_16,Integer.parseInt(weather_code));
+                set_text(max_temp_day_7_hour_16,apparent_temperature);
+                set_text(rain_day_7_hour_16,rain);
+                set_text(showers_day_7_hour_16,showers);
+                set_text(snowfall_day_7_hour_16,snowfall);
+                set_text(uv_day_7_hour_16,uv_index);
+                set_text(wind_direction_day_7_hour_16,wind_direction_10m);
+                set_text(wind_speed_day_7_hour_16,wind_speed_10m);
+            }else if(hour==17){
+                set_7_day_weather_type(weather_day_7_hour_17,Integer.parseInt(weather_code));
+                set_text(max_temp_day_7_hour_17,apparent_temperature);
+                set_text(rain_day_7_hour_17,rain);
+                set_text(showers_day_7_hour_17,showers);
+                set_text(snowfall_day_7_hour_17,snowfall);
+                set_text(uv_day_7_hour_17,uv_index);
+                set_text(wind_direction_day_7_hour_17,wind_direction_10m);
+                set_text(wind_speed_day_7_hour_17,wind_speed_10m);
+            }else if(hour==18){
+                set_7_day_weather_type(weather_day_7_hour_18,Integer.parseInt(weather_code));
+                set_text(max_temp_day_7_hour_18,apparent_temperature);
+                set_text(rain_day_7_hour_18,rain);
+                set_text(showers_day_7_hour_18,showers);
+                set_text(snowfall_day_7_hour_18,snowfall);
+                set_text(uv_day_7_hour_18,uv_index);
+                set_text(wind_direction_day_7_hour_18,wind_direction_10m);
+                set_text(wind_speed_day_7_hour_18,wind_speed_10m);
+            }else if(hour==19){
+                set_7_day_weather_type(weather_day_7_hour_19,Integer.parseInt(weather_code));
+                set_text(max_temp_day_7_hour_19,apparent_temperature);
+                set_text(rain_day_7_hour_19,rain);
+                set_text(showers_day_7_hour_19,showers);
+                set_text(snowfall_day_7_hour_19,snowfall);
+                set_text(uv_day_7_hour_19,uv_index);
+                set_text(wind_direction_day_7_hour_19,wind_direction_10m);
+                set_text(wind_speed_day_7_hour_19,wind_speed_10m);
+            }else if(hour==20){
+                set_7_day_weather_type(weather_day_7_hour_20,Integer.parseInt(weather_code));
+                set_text(max_temp_day_7_hour_20,apparent_temperature);
+                set_text(rain_day_7_hour_20,rain);
+                set_text(showers_day_7_hour_20,showers);
+                set_text(snowfall_day_7_hour_20,snowfall);
+                set_text(uv_day_7_hour_20,uv_index);
+                set_text(wind_direction_day_7_hour_20,wind_direction_10m);
+                set_text(wind_speed_day_7_hour_20,wind_speed_10m);
+            }else if(hour==21){
+                set_7_day_weather_type(weather_day_7_hour_21,Integer.parseInt(weather_code));
+                set_text(max_temp_day_7_hour_21,apparent_temperature);
+                set_text(rain_day_7_hour_21,rain);
+                set_text(showers_day_7_hour_21,showers);
+                set_text(snowfall_day_7_hour_21,snowfall);
+                set_text(uv_day_7_hour_21,uv_index);
+                set_text(wind_direction_day_7_hour_21,wind_direction_10m);
+                set_text(wind_speed_day_7_hour_21,wind_speed_10m);
+            }else if(hour==22){
+                set_7_day_weather_type(weather_day_7_hour_22,Integer.parseInt(weather_code));
+                set_text(max_temp_day_7_hour_22,apparent_temperature);
+                set_text(rain_day_7_hour_22,rain);
+                set_text(showers_day_7_hour_22,showers);
+                set_text(snowfall_day_7_hour_22,snowfall);
+                set_text(uv_day_7_hour_22,uv_index);
+                set_text(wind_direction_day_7_hour_22,wind_direction_10m);
+                set_text(wind_speed_day_7_hour_22,wind_speed_10m);
+            }else if(hour==23){
+                set_7_day_weather_type(weather_day_7_hour_23,Integer.parseInt(weather_code));
+                set_text(max_temp_day_7_hour_23,apparent_temperature);
+                set_text(rain_day_7_hour_23,rain);
+                set_text(showers_day_7_hour_23,showers);
+                set_text(snowfall_day_7_hour_23,snowfall);
+                set_text(uv_day_7_hour_23,uv_index);
+                set_text(wind_direction_day_7_hour_23,wind_direction_10m);
+                set_text(wind_speed_day_7_hour_23,wind_speed_10m);
+            }else if(hour==24){
+                set_7_day_weather_type(weather_day_7_hour_24,Integer.parseInt(weather_code));
+                set_text(max_temp_day_7_hour_24,apparent_temperature);
+                set_text(rain_day_7_hour_24,rain);
+                set_text(showers_day_7_hour_24,showers);
+                set_text(snowfall_day_7_hour_24,snowfall);
+                set_text(uv_day_7_hour_24,uv_index);
+                set_text(wind_direction_day_7_hour_24,wind_direction_10m);
+                set_text(wind_speed_day_7_hour_24,wind_speed_10m);
+            }
         }
     }
 }
