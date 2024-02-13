@@ -18,9 +18,12 @@
         android:theme="@style/Theme.PANCHATATVAWEATHERAPP"
         tools:targetApi="31">
         <activity
-            android:name=".New_Location"
-            android:windowSoftInputMode="adjustNothing"
+            android:name=".hours_168"
             android:exported="false" />
+        <activity
+            android:name=".New_Location"
+            android:exported="false"
+            android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name=".permis_grant"
             android:exported="true"
