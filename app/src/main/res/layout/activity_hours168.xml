@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".hours_168">
-    <com.airbnb.lottie.LottieAnimationView android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent" app:lottie_autoPlay="true" app:lottie_loop="true" app:lottie_rawRes="@raw/error_ballon" android:id="@+id/errorballon" android:background="@drawable/rose_water"/>
-    <com.airbnb.lottie.LottieAnimationView android:visibility="visible" android:layout_width="match_parent" android:layout_height="match_parent" app:lottie_autoPlay="true" app:lottie_loop="true" app:lottie_rawRes="@raw/human_cycle" android:id="@+id/lottie1" android:background="@drawable/peach"/>
-    <com.airbnb.lottie.LottieAnimationView android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="fitXY" app:lottie_autoPlay="true" app:lottie_loop="true" app:lottie_rawRes="@raw/light_tower_night" android:id="@+id/lottie2"/>
-    <androidx.core.widget.NestedScrollView android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/nestedscrool"
+    <com.airbnb.lottie.LottieAnimationView android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent" app:lottie_autoPlay="true" app:lottie_loop="true" app:lottie_rawRes="@raw/error_ballon" android:id="@+id/errorballons" android:background="@drawable/rose_water"/>
+    <com.airbnb.lottie.LottieAnimationView android:visibility="visible" android:layout_width="match_parent" android:layout_height="match_parent" app:lottie_autoPlay="true" app:lottie_loop="true" app:lottie_rawRes="@raw/human_cycle" android:id="@+id/lottie1s" android:background="@drawable/peach"/>
+    <com.airbnb.lottie.LottieAnimationView android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="fitXY" app:lottie_autoPlay="true" app:lottie_loop="true" app:lottie_rawRes="@raw/light_tower_night" android:id="@+id/lottie2s"/>
+    <androidx.core.widget.NestedScrollView android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/nestedscrools"
         tools:ignore="MissingConstraints">
         <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
             tools:ignore="MissingConstraints">

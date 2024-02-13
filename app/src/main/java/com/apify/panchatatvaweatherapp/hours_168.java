@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -12,6 +13,9 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.google.gson.JsonObject;
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
 import com.jjoe64.graphview.series.PointsGraphSeries;
 
 import org.json.JSONArray;
@@ -21,6 +25,13 @@ import org.json.JSONObject;
 public class hours_168 extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     Toolbar toolbar;
+    GraphView graphView1;
+    GraphView graphView2;
+    GraphView graphView3;
+    GraphView graphView4;
+    GraphView graphView5;
+    GraphView graphView6;
+    GraphView graphView7;
     TextView timing_day_1_hour_1;
     TextView max_temp_day_1_hour_1;
     TextView wind_speed_day_1_hour_1;
@@ -1526,7 +1537,14 @@ public class hours_168 extends AppCompatActivity {
         setContentView(R.layout.activity_hours168);
         sharedPreferences=getSharedPreferences("locations",0);
         toolbar=findViewById(R.id.toolsbar1);
-
+        //graphview
+        graphView1=findViewById(R.id.graph1);
+        graphView2=findViewById(R.id.graph2);
+        graphView3=findViewById(R.id.graph3);
+        graphView4=findViewById(R.id.graph4);
+        graphView5=findViewById(R.id.graph5);
+        graphView6=findViewById(R.id.graph6);
+        graphView7=findViewById(R.id.graph7);
         //setting text view and imageview
         timing_day_1_hour_1=findViewById(R.id.timing_day_1_hour_1);
         max_temp_day_1_hour_1=findViewById(R.id.max_temp_day_1_hour_1);
@@ -3065,6 +3083,8 @@ public class hours_168 extends AppCompatActivity {
                         JSONArray wind_speed_10m=hourly.getJSONArray("wind_speed_10m");
                         for (int i = 0; i <7; i++) {
                             set_date(i,(hourly.getJSONArray("time").getString(i*24)));
+                            Log.e("call","called");
+                            graphs(i,apparent_temperature);
                         }
                         for (int i = 0; i < 168; i++) {
                             set_all(day_count(i),hour_count(i),weather_code.getString(i),apparent_temperature.getString(i),rain.getString(i),showers.getString(i),snowfall.getString(i),uv_index.getString(i),wind_direction_10m.getString(i),wind_speed_10m.getString(i));
@@ -3104,6 +3124,7 @@ public class hours_168 extends AppCompatActivity {
             TextView textView=findViewById(R.id.day_7);
             textView.setText(i.substring(8,10)+"-"+i.substring(5,7));
         }
+
     }
     public void set_7_day_weather_type(ImageView img,int weather_code){
         if (weather_code== 0) {
@@ -3167,6 +3188,36 @@ public class hours_168 extends AppCompatActivity {
         return time/24;
     }public int hour_count(int time){
         return time%24+1;
+    }
+    public void graphs(int i, JSONArray jSONArray) throws JSONException {
+        if(i==0){
+            set_graph(24*i,jSONArray,graphView1);
+        }else if(i==1){
+            set_graph(24*i,jSONArray,graphView2);
+        }else if(i==2){
+            set_graph(24*i,jSONArray,graphView3);
+        }else if(i==3){
+            set_graph(24*i,jSONArray,graphView4);
+        }else if(i==4){
+            set_graph(24*i,jSONArray,graphView5);
+        }else if(i==5){
+            set_graph(24*i,jSONArray,graphView6);
+        }else if(i==6){
+            set_graph(24*i,jSONArray,graphView7);
+        }
+        Log.e("call","called->"+i);
+    }
+    public void set_graph(int i, JSONArray jSONArray,GraphView graphss) throws JSONException {
+        Log.d("step1", "");
+        LineGraphSeries lineGraphSeries = new LineGraphSeries(new DataPoint[]{new DataPoint(0.0d, ((Double) jSONArray.get(i)).doubleValue()), new DataPoint(1.0d, ((Double) jSONArray.get(i + 1)).doubleValue()), new DataPoint(2.0d, ((Double) jSONArray.get(i + 2)).doubleValue()), new DataPoint(3.0d, ((Double) jSONArray.get(i + 3)).doubleValue()), new DataPoint(4.0d, ((Double) jSONArray.get(i + 4)).doubleValue()), new DataPoint(5.0d, ((Double) jSONArray.get(i + 5)).doubleValue()), new DataPoint(6.0d, ((Double) jSONArray.get(i + 6)).doubleValue()), new DataPoint(7.0d, ((Double) jSONArray.get(i + 7)).doubleValue()), new DataPoint(8.0d, ((Double) jSONArray.get(i + 8)).doubleValue()), new DataPoint(9.0d, ((Double) jSONArray.get(i + 9)).doubleValue()), new DataPoint(10.0d, ((Double) jSONArray.get(i + 10)).doubleValue()), new DataPoint(11.0d, ((Double) jSONArray.get(i + 11)).doubleValue()), new DataPoint(12.0d, ((Double) jSONArray.get(i + 12)).doubleValue()), new DataPoint(13.0d, ((Double) jSONArray.get(i + 13)).doubleValue()), new DataPoint(14.0d, ((Double) jSONArray.get(i + 14)).doubleValue()), new DataPoint(15.0d, ((Double) jSONArray.get(i + 15)).doubleValue()), new DataPoint(16.0d, ((Double) jSONArray.get(i + 16)).doubleValue()), new DataPoint(17.0d, ((Double) jSONArray.get(i + 17)).doubleValue()), new DataPoint(18.0d, ((Double) jSONArray.get(i + 18)).doubleValue()), new DataPoint(19.0d, ((Double) jSONArray.get(i + 19)).doubleValue()), new DataPoint(20.0d, ((Double) jSONArray.get(i + 20)).doubleValue()), new DataPoint(21.0d, ((Double) jSONArray.get(i + 21)).doubleValue()), new DataPoint(22.0d, ((Double) jSONArray.get(i + 22)).doubleValue()), new DataPoint(23.0d, ((Double) jSONArray.get(i + 23)).doubleValue())});
+        Log.d("step2", "");
+        lineGraphSeries.setColor(R.color.black);
+        graphss.setTitleColor(R.color.black);
+        Log.d("step3", "");
+        graphss.addSeries(lineGraphSeries);
+        Log.d("step4", "");
+        Log.d("ans --->>", "b");
+        Log.e("call","called-->>");
     }
     public void set_all(int day,int hour,String weather_code,String apparent_temperature,String rain,String showers,String snowfall,String uv_index,String wind_direction_10m,String wind_speed_10m){
         if(day==0){

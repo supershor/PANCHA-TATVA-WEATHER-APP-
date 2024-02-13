@@ -613,6 +613,7 @@ public class MainActivity extends AppCompatActivity {
         }else if(itemId==R.id.days_7_168_hours_detail){
             Intent days7=new Intent(MainActivity.this,hours_168.class);
             startActivity(days7);
+            finish();
         }
         return super.onOptionsItemSelected(menuItem);
     }
