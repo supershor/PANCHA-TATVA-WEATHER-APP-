@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.apify.panchatatvaweatherapp"
+    namespace = "com.supershor.panchatatvaweatherapp"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.apify.panchatatvaweatherapp"
+        applicationId = "com.supershor.panchatatvaweatherapp"
         minSdk = 24
         targetSdk = 34
         versionCode = 2
