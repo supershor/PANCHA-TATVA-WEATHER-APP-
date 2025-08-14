@@ -7,11 +7,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.androidnetworking.AndroidNetworking;
-import com.androidnetworking.common.Priority;
-import com.androidnetworking.error.ANError;
-import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
@@ -3060,13 +3062,13 @@ public class hours_168 extends AppCompatActivity {
         set();
     }
     public void set(){
-        AndroidNetworking.initialize(hours_168.this);
         if(sharedPreferences.getString("locality",null)!=null){
             toolbar.setTitle(sharedPreferences.getString("locality",null));
         }
         setSupportActionBar(toolbar);
         if(sharedPreferences.getString("getLatitude",null)!=null && sharedPreferences.getString("getLongitude",null)!=null ){
-            AndroidNetworking.get("https://api.open-meteo.com/v1/forecast?latitude=" + this.sharedPreferences.getString("getLatitude", null) + "&longitude=" + this.sharedPreferences.getString("getLongitude", null) + "&current=relative_humidity_2m,temperature,apparent_temperature,is_day,rain,showers,snowfall,weather_code,cloud_cover,wind_speed_10m,wind_direction_10m&hourly=apparent_temperature,rain,showers,snowfall,weather_code,wind_speed_10m,wind_direction_10m,uv_index,is_day&daily=weather_code,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,uv_index_max,rain_sum,showers_sum,snowfall_sum&timezone=auto&forecast_days=7").setPriority(Priority.HIGH).build().getAsJSONObject(new JSONObjectRequestListener() {
+//            JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, "https://api.open-meteo.com/v1/forecast?latitude=\" + this.sharedPreferences.getString(\"getLatitude\", null) + \"&longitude=\" + this.sharedPreferences.getString(\"getLongitude\", null) + \"&current=relative_humidity_2m,temperature,apparent_temperature,is_day,rain,showers,snowfall,weather_code,cloud_cover,wind_speed_10m,wind_direction_10m&hourly=apparent_temperature,rain,showers,snowfall,weather_code,wind_speed_10m,wind_direction_10m,uv_index,is_day&daily=weather_code,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,uv_index_max,rain_sum,showers_sum,snowfall_sum&timezone=auto&forecast_days=7", null, new Response.Listener<JSONObject>() {
+            JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, "https://api.open-meteo.com/v1/forecast?latitude=" + this.sharedPreferences.getString("getLatitude", null) + "&longitude=" + this.sharedPreferences.getString("getLongitude", null) + "&current=relative_humidity_2m,temperature,apparent_temperature,is_day,rain,showers,snowfall,weather_code,cloud_cover,wind_speed_10m,wind_direction_10m&hourly=apparent_temperature,rain,showers,snowfall,weather_code,wind_speed_10m,wind_direction_10m,uv_index,is_day&daily=weather_code,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,uv_index_max,rain_sum,showers_sum,snowfall_sum&timezone=auto&forecast_days=7", null, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
                     try {
@@ -3087,16 +3089,19 @@ public class hours_168 extends AppCompatActivity {
                         for (int i = 0; i < 168; i++) {
                             set_all(day_count(i),hour_count(i),weather_code.getString(i),apparent_temperature.getString(i),rain.getString(i),showers.getString(i),snowfall.getString(i),uv_index.getString(i),wind_direction_10m.getString(i),wind_speed_10m.getString(i));
                         }
+
                     } catch (JSONException e) {
                         throw new RuntimeException(e);
                     }
                 }
+            }, new Response.ErrorListener() {
 
                 @Override
-                public void onError(ANError anError) {
-
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(hours_168.this, error.toString(), Toast.LENGTH_SHORT).show();
                 }
             });
+            Volley.newRequestQueue(hours_168.this).add(jsonObjectRequest);
         }
     }
     public void set_date(int date,String i){

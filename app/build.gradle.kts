@@ -4,14 +4,14 @@ plugins {
 
 android {
     namespace = "com.supershor.panchatatvaweatherapp"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.supershor.panchatatvaweatherapp"
         minSdk = 24
-        targetSdk = 34
-        versionCode = 4
-        versionName = "4.0"
+        targetSdk = 35
+        versionCode = 5
+        versionName = "5.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -32,7 +32,7 @@ android {
 }
 
 dependencies {
-    implementation ("com.amitshekhar.android:android-networking:1.0.2")
+    implementation("com.android.volley:volley:1.2.1")
     implementation ("com.jjoe64:graphview:4.2.2")
     implementation ("com.airbnb.android:lottie:6.2.0")
     implementation ("com.intuit.sdp:sdp-android:1.1.0")

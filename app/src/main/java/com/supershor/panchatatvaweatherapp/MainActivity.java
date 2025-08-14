@@ -18,10 +18,11 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.net.MailTo;
 import androidx.core.widget.NestedScrollView;
 import com.airbnb.lottie.LottieAnimationView;
-import com.androidnetworking.AndroidNetworking;
-import com.androidnetworking.common.Priority;
-import com.androidnetworking.error.ANError;
-import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
@@ -619,15 +620,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void recall() {
-        AndroidNetworking.initialize(this);
         if (this.sharedPreferences.getString("locality", null) != null) {
             this.toolbar.setTitle(this.sharedPreferences.getString("locality", "++"));
         }
         setSupportActionBar(this.toolbar);
         if (this.sharedPreferences.getString("getLatitude", null) != null && this.sharedPreferences.getString("getLongitude", null) != null && this.sharedPreferences.getString("getLatitude", null).length() > 0 && this.sharedPreferences.getString("getLongitude", null).length() > 0) {
-            AndroidNetworking.get("https://api.open-meteo.com/v1/forecast?latitude=" + this.sharedPreferences.getString("getLatitude", null) + "&longitude=" + this.sharedPreferences.getString("getLongitude", null) + "&current=relative_humidity_2m,temperature,apparent_temperature,is_day,rain,showers,snowfall,weather_code,cloud_cover,wind_speed_10m,wind_direction_10m&hourly=apparent_temperature,rain,showers,snowfall,weather_code,wind_speed_10m,wind_direction_10m,uv_index,is_day&daily=weather_code,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,uv_index_max,rain_sum,showers_sum,snowfall_sum&timezone=auto&forecast_days=7").setPriority(Priority.HIGH).build().getAsJSONObject(new JSONObjectRequestListener() { // from class: com.apify.panch_tatva.MainActivity.1
-                @SuppressLint("SetTextI18n")
-                @Override // com.androidnetworking.interfaces.JSONObjectRequestListener
+            JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, "https://api.open-meteo.com/v1/forecast?latitude=" + this.sharedPreferences.getString("getLatitude", null) + "&longitude=" + this.sharedPreferences.getString("getLongitude", null) + "&current=relative_humidity_2m,temperature,apparent_temperature,is_day,rain,showers,snowfall,weather_code,cloud_cover,wind_speed_10m,wind_direction_10m&hourly=apparent_temperature,rain,showers,snowfall,weather_code,wind_speed_10m,wind_direction_10m,uv_index,is_day&daily=weather_code,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,uv_index_max,rain_sum,showers_sum,snowfall_sum&timezone=auto&forecast_days=7", null, new Response.Listener<JSONObject>() {
+                @Override
                 public void onResponse(JSONObject jSONObject) {
                     JSONArray jSONArray;
                     int i;
@@ -1251,10 +1250,11 @@ public class MainActivity extends AppCompatActivity {
                         MainActivity.this.nestedScrollView.setVisibility(View.GONE);
                     }
                 }
+            }, new Response.ErrorListener(){
 
-                @Override // com.androidnetworking.interfaces.JSONObjectRequestListener
-                public void onError(ANError aNError) {
-                    Log.d("ans", aNError.toString());
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.d("ans", error.toString());
                     Toast.makeText(MainActivity.this, "Error in weather details please try restarting the app", Toast.LENGTH_LONG).show();
                     MainActivity.this.lottieAnimationView1.setVisibility(View.VISIBLE);
                     MainActivity.this.lottielight.setVisibility(View.GONE);
@@ -1262,6 +1262,7 @@ public class MainActivity extends AppCompatActivity {
                     MainActivity.this.nestedScrollView.setVisibility(View.GONE);
                 }
             });
+            Volley.newRequestQueue(this).add(jsonObjectRequest);
         } else {
             Toast.makeText(this, "Couldn't get your current location please try restarting the app", Toast.LENGTH_LONG).show();
             this.lottieAnimationView1.setVisibility(View.VISIBLE);
@@ -1270,8 +1271,8 @@ public class MainActivity extends AppCompatActivity {
             this.nestedScrollView.setVisibility(View.GONE);
         }
         if (this.sharedPreferences.getString("getLatitude", null) != null && this.sharedPreferences.getString("getLongitude", null) != null && this.sharedPreferences.getString("getLatitude", null).length() > 0 && this.sharedPreferences.getString("getLongitude", null).length() > 0) {
-            AndroidNetworking.get("https://air-quality-api.open-meteo.com/v1/air-quality?latitude=" + this.sharedPreferences.getString("getLatitude", null) + "&longitude=" + this.sharedPreferences.getString("getLongitude", null) + "&current=european_aqi,us_aqi,pm10,pm2_5,carbon_monoxide,nitrogen_dioxide,sulphur_dioxide,ozone,dust,ammonia&timezone=auto&forecast_days=1").setPriority(Priority.HIGH).build().getAsJSONObject(new JSONObjectRequestListener() { // from class: com.apify.panch_tatva.MainActivity.2
-                @Override // com.androidnetworking.interfaces.JSONObjectRequestListener
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, "https://air-quality-api.open-meteo.com/v1/air-quality?latitude=" + this.sharedPreferences.getString("getLatitude", null) + "&longitude=" + this.sharedPreferences.getString("getLongitude", null) + "&current=european_aqi,us_aqi,pm10,pm2_5,carbon_monoxide,nitrogen_dioxide,sulphur_dioxide,ozone,dust,ammonia&timezone=auto&forecast_days=1", null, new Response.Listener<JSONObject>() {
+                @Override
                 public void onResponse(JSONObject jSONObject) {
                     Log.d("ans", jSONObject.toString());
                     try {
@@ -1293,10 +1294,10 @@ public class MainActivity extends AppCompatActivity {
                         MainActivity.this.nestedScrollView.setVisibility(View.GONE);
                     }
                 }
-
-                @Override // com.androidnetworking.interfaces.JSONObjectRequestListener
-                public void onError(ANError aNError) {
-                    Log.d("ans", aNError.toString());
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.d("ans", error.toString());
                     Toast.makeText(MainActivity.this, "Error in air details please try restarting the app", Toast.LENGTH_LONG).show();
                     MainActivity.this.lottieAnimationView1.setVisibility(View.VISIBLE);
                     MainActivity.this.lottielight.setVisibility(View.GONE);
@@ -1304,6 +1305,7 @@ public class MainActivity extends AppCompatActivity {
                     MainActivity.this.nestedScrollView.setVisibility(View.GONE);
                 }
             });
+            Volley.newRequestQueue(this).add(jsonObjectRequest);
             return;
         }
         Toast.makeText(this, "Couldn't get your current location please try restarting the app", Toast.LENGTH_LONG).show();

@@ -16,4 +16,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "PANCHA TATVA(WEATHER APP)"
 include(":app")
- 
+
